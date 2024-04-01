@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindMuse.AspNetCore", "MindMuse.AspNetCore.csproj", "{89589DA2-DAD6-440D-846A-92592820CAD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindMuse.Application", "..\MindMuse.Application\MindMuse.Application.csproj", "{400FFB25-C8AD-487F-B4E1-D551ED1786A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindMuse.Application.Contracts", "..\MindMuse.Application.Contracts\MindMuse.Application.Contracts.csproj", "{7EFDE42E-4DFB-4D78-92BC-9BEBC0245B48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindMuse.Data", "..\MindMuse.Data\MindMuse.Data.csproj", "{9AED1742-2950-456A-8922-58ABCB4F7442}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindMuse.Data.Contracts", "..\MindMuse.Data.Contracts\MindMuse.Data.Contracts.csproj", "{FE0E1628-FA6D-431E-AA73-2A5FD397DAF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89589DA2-DAD6-440D-846A-92592820CAD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89589DA2-DAD6-440D-846A-92592820CAD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89589DA2-DAD6-440D-846A-92592820CAD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89589DA2-DAD6-440D-846A-92592820CAD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{400FFB25-C8AD-487F-B4E1-D551ED1786A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{400FFB25-C8AD-487F-B4E1-D551ED1786A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{400FFB25-C8AD-487F-B4E1-D551ED1786A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{400FFB25-C8AD-487F-B4E1-D551ED1786A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EFDE42E-4DFB-4D78-92BC-9BEBC0245B48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EFDE42E-4DFB-4D78-92BC-9BEBC0245B48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EFDE42E-4DFB-4D78-92BC-9BEBC0245B48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EFDE42E-4DFB-4D78-92BC-9BEBC0245B48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AED1742-2950-456A-8922-58ABCB4F7442}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AED1742-2950-456A-8922-58ABCB4F7442}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AED1742-2950-456A-8922-58ABCB4F7442}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AED1742-2950-456A-8922-58ABCB4F7442}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE0E1628-FA6D-431E-AA73-2A5FD397DAF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0E1628-FA6D-431E-AA73-2A5FD397DAF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0E1628-FA6D-431E-AA73-2A5FD397DAF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0E1628-FA6D-431E-AA73-2A5FD397DAF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16652BD0-D697-4D3A-A4B3-833BFF0AE24C}
+	EndGlobalSection
+EndGlobal
