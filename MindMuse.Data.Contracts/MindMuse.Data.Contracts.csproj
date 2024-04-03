@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MindMuse.Application.Contracts\MindMuse.Application.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

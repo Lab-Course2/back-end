@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {}
+    "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {
+    "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj",
         "projectName": "MindMuse.Application.Contracts",
-        "projectPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj",
-        "packagesPath": "C:\\Users\\Zamira\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\obj\\",
+        "projectPath": "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Liza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Zamira\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Liza\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,6 +39,36 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -60,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

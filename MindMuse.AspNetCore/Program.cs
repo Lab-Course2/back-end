@@ -1,15 +1,31 @@
+using System.Globalization;
+using MindMuse.Application.Filters;
+using MindMuse.Application;
+using MindMuse.Data;
+using MindMuse.Application.Contracts.Interfaces;
+using MindMuse.Application.Contracts.Models.Operations;
+
 var builder = WebApplication.CreateBuilder(args);
+ConfigurationManager configuration = builder.Configuration;
+// Add configuration
+builder.Configuration.AddJsonFile("appsettings.json");
 
-// Add services to the container.
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<GlobalExceptionFilter>();
+});
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+ApplicationInjection.AddApplicationServices(builder.Services);
+DataInjectionServices.AddDataServices(builder.Services, builder.Configuration);
+
+// Assuming services is an instance of IServiceCollection in your dependency injection configuration
+builder.Services.AddSingleton<IOperationResult, OperationResult>();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -17,9 +33,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
