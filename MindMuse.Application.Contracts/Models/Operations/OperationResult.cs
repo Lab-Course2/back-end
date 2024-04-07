@@ -35,5 +35,9 @@ namespace MindMuse.Application.Contracts.Models.Operations
             return new OperationResult(false, message, errors);
         }
 
+        public OperationResult()
+        {
+        }
+
     }
 }

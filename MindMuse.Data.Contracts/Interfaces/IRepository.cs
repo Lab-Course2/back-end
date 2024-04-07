@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MindMuse.Application.Contracts.Interfaces
+namespace MindMuse.Data.Contracts.Interfaces
 {
     public interface IRepository<T>
     {
         Task<string> GetIdByEmailAndPasswordAsync(string email, string password);
-        Task<T> GetByIdAsync(int id);
+        Task<T> GetByIdAsync(string id);
         Task<IEnumerable<T>> GetAllAsync();
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(string id);
     }
 }

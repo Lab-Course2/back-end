@@ -8,6 +8,7 @@ using MindMuse.Application.Contracts.Identity;
 using MindMuse.Application.Contracts.Interfaces;
 using MindMuse.Data.Repositories;
 using AppointEase.Data.Repositories;
+using MindMuse.Data.Contracts.Interfaces;
 
 namespace MindMuse.Data
 {
@@ -27,10 +28,10 @@ namespace MindMuse.Data
                  .AddDefaultTokenProviders();
 
             serviceDescriptors.AddScoped<MindMuseContext>();
-            serviceDescriptors.AddScoped<IRepository<TblPatient>, UserRepository>();
-            serviceDescriptors.AddScoped<IRepository<TblAdmin>, AdminRepository>();
-            serviceDescriptors.AddScoped<IRepository<TblClinic>, ClinicRepository>();
-            serviceDescriptors.AddScoped<IRepository<TblDoctor>, DoctorReporsitory>();
+            serviceDescriptors.AddScoped<IRepository<Patient>, UserRepository>();
+            serviceDescriptors.AddScoped<IRepository<Admin>, AdminRepository>();
+            serviceDescriptors.AddScoped<IRepository<Clinic>, ClinicRepository>();
+            serviceDescriptors.AddScoped<IRepository<Doctor>, DoctorReporsitory>();
 
         }
     }

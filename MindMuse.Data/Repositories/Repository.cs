@@ -1,6 +1,7 @@
 ﻿using MindMuse.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using MindMuse.Application.Contracts.Interfaces;
+using MindMuse.Data.Contracts.Interfaces;
 
 namespace MindMuse.Data.Repositories
 {
@@ -31,7 +32,7 @@ namespace MindMuse.Data.Repositories
             return null;
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(string id)
         {
             return await _context.Set<T>().FindAsync(id);
         }
@@ -53,7 +54,7 @@ namespace MindMuse.Data.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(string id)
         {
             var entity = await GetByIdAsync(id);
             _context.Set<T>().Remove(entity);

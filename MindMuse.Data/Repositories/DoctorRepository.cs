@@ -4,7 +4,7 @@ using MindMuse.Data.Repositories;
 
 namespace MindMuse.Data.Repositories
 {
-    public class DoctorReporsitory : Repository<TblDoctor>
+    public class DoctorReporsitory : Repository<Doctor>
     {
         public DoctorReporsitory(MindMuseContext context) : base(context)
         {

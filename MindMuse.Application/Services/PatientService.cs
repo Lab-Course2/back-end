@@ -5,60 +5,56 @@ using Microsoft.AspNetCore.Identity;
 using MindMuse.Application.Contracts.Identity;
 using MindMuse.Application.Contracts.Interfaces;
 using MindMuse.Application.Contracts.Models.Operations;
-using MindMuse.Application.Contracts.ModelsRespond;
-using MindMuse.Application.Contracts.Requests;
 using System.Data;
+using MindMuse.Application.Contracts.Models.Requests;
+using MindMuse.Data.Contracts.Interfaces;
 
 
 namespace MindMuse.Application.Services
 {
     public class PatientService : IPatientService
     {
-        private readonly IRepository<TblPatient> _uRepository;
+        private readonly IRepository<Patient> _patientRepository;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IMapper _mapper;
         private readonly IApplicationExtensions _common;
         private readonly IOperationResult _operationResult;
 
-        public PatientService(IRepository<TblPatient> uRepository, UserManager<ApplicationUser> userManager, IMapper mapper, IApplicationExtensions common, IOperationResult operation)
+        public PatientService(IRepository<Patient> patientRepository, UserManager<ApplicationUser> userManager, IMapper mapper, IApplicationExtensions common, IOperationResult operationResult)
         {
-            _uRepository = uRepository;
+            _patientRepository = patientRepository;
             _userManager = userManager;
             _mapper = mapper;
             _common = common;
-            _operationResult = operation;
+            _operationResult = operationResult;
         }
 
-        public async Task<OperationResult> CreatePatitentAsync(PatientRequest patientRequest)
+        public async Task<OperationResult> CreatePatientAsync(PatientRequest patientRequest)
         {
             try
             {
 
-                var patient = _mapper.Map<TblPatient>(patientRequest);
-                var patients = await GetAllPatitents();
+                var patientExists = await CheckIfPatientExists(patientRequest.Email, patientRequest.PersonalNumber, null);
 
-
-                var patientExcist = from pExcist in patients
-                                    where pExcist != null && (pExcist.Email == patientRequest.Email || pExcist.PersonalNumber == patientRequest.PersonalNumber)
-                                    select pExcist;
-
-                if (patientExcist?.Count() > 0)
+                if (patientExists != null)
+                {
                     return _operationResult.ErrorResult("Failed to create patient:", new[] { "This patient exists, please try again!" });
+                }
 
-                var user = _mapper.Map<ApplicationUser>(patientRequest);
+                var user = _mapper.Map<Patient>(patientRequest);
 
                 var result = await _userManager.CreateAsync(user, patientRequest.Password);
 
                 if (!result.Succeeded)
+                {
                     return _operationResult.ErrorResult($"Failed to create user:", result.Errors.Select(e => e.Description));
+                }
 
                 await _userManager.AddToRoleAsync(user, user.Role);
-                await _uRepository.AddAsync(patient);
 
                 _common.AddInformationMessage("Patient created successfully!");
 
                 return _operationResult.SuccessResult("Patient created successfully!");
-
             }
             catch (FluentValidation.ValidationException validationException)
             {
@@ -70,63 +66,126 @@ namespace MindMuse.Application.Services
                 return _operationResult.ErrorResult($"Failed to create user:", new[] { ex.Message });
             }
         }
-
-        public async Task<OperationResult> DeletePatitent(int personId)
+        private async Task<Patient> CheckIfPatientExists(string email, int personalNumber, string currentUserId)
         {
-            var person = await GetPatitent(personId);
-            var user = await _userManager.FindByEmailAsync(person.Email);
+            var patients = await GetAllPatients();
 
-            if (user == null)
-                return _operationResult.ErrorResult($"Not Found:", new[] { "User doesn't excist!" });
+            var patientRequest = patients.FirstOrDefault(p =>
+                p != null && (p.Email == email || p.PersonalNumber == personalNumber) && p.Id != currentUserId);
 
-            // Fshij përdoruesin nga baza e të dhënave
-            var result = await _userManager.DeleteAsync(user);
-            await _uRepository.DeleteAsync(personId);
+            if (patientRequest != null)
+            {
+                return _mapper.Map<Patient>(patientRequest);
+            }
 
-            return _operationResult.SuccessResult("Patient Deleted successfully!");
+            return null;
         }
 
-        public async Task<IEnumerable<PatientResponse>> GetAllPatitents()
-        {
-            var persons = await _uRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<PatientResponse>>(persons);
-        }
-
-        public async Task<PatientResponse> GetPatitent(int patientId)
-        {
-            var persons = _uRepository.GetByIdAsync(patientId);
-            return _mapper.Map<PatientResponse>(persons);
-        }
-
-        public async Task<OperationResult> UpdatePatitent(int personId, PatientRequest patientRequest)
+        public async Task<OperationResult> DeletePatient(string patientId)
         {
             try
             {
-                var existingPerson = await _uRepository.GetByIdAsync(personId);
-                if (existingPerson == null)
-                    return _operationResult.ErrorResult("Person not found", new[] { "Error1" });
+                var patient = await _userManager.FindByIdAsync(patientId);
 
-                // Validate patientRequest using FluentValidation
-                //_personValidator.ValidateAndThrow(patientRequest);
-                var user = _mapper.Map<ApplicationUser>(patientRequest);
+                if (patient == null)
+                {
+                    return _operationResult.ErrorResult($"Patient not found with ID: {patientId}", new[] { "Patient not found." });
+                }
 
-                await _userManager.UpdateAsync(user);
+                var deleteResult = await _userManager.DeleteAsync(patient);
 
-                _mapper.Map(patientRequest, existingPerson);
-                await _uRepository.UpdateAsync(existingPerson);
+                if (!deleteResult.Succeeded)
+                {
+                    return _operationResult.ErrorResult($"Failed to delete patient:", deleteResult.Errors.Select(e => e.Description));
+                }
 
-                return _operationResult.SuccessResult();
+                _common.AddInformationMessage("Patient deleted successfully!");
+
+                return _operationResult.SuccessResult("Patient deleted successfully!");
+            }
+            catch (Exception ex)
+            {
+                _common.AddErrorMessage($"Error deleting patient: {ex.Message}");
+                return _operationResult.ErrorResult($"Failed to delete patient:", new[] { ex.Message });
+            }
+        }
+
+        public async Task<IEnumerable<PatientRequest>> GetAllPatients()
+        {
+            var patients = await _patientRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<PatientRequest>>(patients);
+        }
+
+        public async Task<PatientRequest> GetPatient(string patientId)
+        {
+            var patient = await _userManager.FindByIdAsync(patientId);
+
+            if (patient == null)
+            {
+                return null;
+            }
+
+            return _mapper.Map<PatientRequest>(patient);
+        }
+
+        public async Task<OperationResult> UpdatePatient(string userId, PatientRequest patientRequest)
+        {
+            try
+            {
+                var existingPatient = await _userManager.FindByIdAsync(userId);
+
+                if (existingPatient == null)
+                {
+                    return _operationResult.ErrorResult("Failed to update patient:", new[] { "Patient not found!" });
+                }
+
+                var patientExists = await CheckIfPatientExists(patientRequest.Email, patientRequest.PersonalNumber, userId);
+
+                if (patientExists != null && patientExists.UserName != userId)
+                {
+                    return _operationResult.ErrorResult("Failed to update patient:", new[] { "This email or personal number is already associated with another patient!" });
+                }
+
+                UpdatePatientProperties(existingPatient, patientRequest);
+
+                var result = await _userManager.UpdateAsync(existingPatient);
+
+                if (!result.Succeeded)
+                {
+                    return _operationResult.ErrorResult($"Failed to update patient:", result.Errors.Select(e => e.Description));
+                }
+
+                _common.AddInformationMessage("Patient updated successfully!");
+
+                return _operationResult.SuccessResult("Patient updated successfully!");
             }
             catch (FluentValidation.ValidationException validationException)
             {
-                return _operationResult.ErrorResult("Failed to update user: Validation error", validationException.Errors.Select(e => e.ErrorMessage));
+                return _operationResult.ErrorResult("Failed to update patient: Validation error", validationException.Errors.Select(e => e.ErrorMessage));
             }
             catch (Exception ex)
             {
                 _common.AddErrorMessage($"Error updating patient: {ex.Message}");
-                return _operationResult.ErrorResult($"Failed to create user:", new[] { ex.Message });
+                return _operationResult.ErrorResult($"Failed to update patient:", new[] { ex.Message });
             }
         }
 
+        private void UpdatePatientProperties(ApplicationUser existingPatient, PatientRequest patientRequest)
+        {
+            existingPatient.UserName = patientRequest.UserName;
+            existingPatient.Email = patientRequest.Email;
+            existingPatient.Name = patientRequest.Name;
+            existingPatient.Surname = patientRequest.Surname;
+            existingPatient.Role = patientRequest.Role;
+            existingPatient.Address = patientRequest.Address;
+            existingPatient.PhoneNumber = patientRequest.PhoneNumber;
+
+            if (existingPatient is Patient patientToUpdate)
+            {
+                patientToUpdate.PersonalNumber = patientRequest.PersonalNumber;
+                patientToUpdate.Gender = patientRequest.Gender;
+                patientToUpdate.Description = patientRequest.Description;
+            }
+        }
     }
 }

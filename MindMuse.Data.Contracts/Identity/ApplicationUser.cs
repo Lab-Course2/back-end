@@ -12,6 +12,6 @@ namespace MindMuse.Application.Contracts.Identity
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Role { get; set; }
-        public string PersonalNumber { get; set; }
+        public string Address { get; set; }
     }
 }

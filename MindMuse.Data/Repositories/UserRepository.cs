@@ -4,7 +4,7 @@ using MindMuse.Data.Repositories;
 
 namespace AppointEase.Data.Repositories
 {
-    public class UserRepository : Repository<TblPatient>
+    public class UserRepository : Repository<Patient>
     {
         public UserRepository(MindMuseContext context) : base(context)
         {
