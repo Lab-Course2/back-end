@@ -55,6 +55,9 @@ namespace MindMuse.Application.Services
 
                 await _userManager.AddToRoleAsync(user, user.Role);
 
+
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+               
                 _common.AddInformationMessage("Clinic created successfully!");
 
                 return _operationResult.SuccessResult("Clinic created successfully!");
@@ -143,14 +146,23 @@ namespace MindMuse.Application.Services
                     return _operationResult.ErrorResult("Failed to update clinic:", new[] { "Clinic not found!" });
                 }
 
-                var patientExists = await CheckIfClinicExists(clinicRequest.Email, userId);
+                var clinicExists = await CheckIfClinicExists(clinicRequest.Email, userId);
 
-                if (patientExists != null && patientExists.UserName != userId)
+                if (clinicExists != null && clinicExists.Id != userId)
                 {
-                    return _operationResult.ErrorResult("Failed to update clinic:", new[] { "This email or personal number is already associated with another clinic!" });
+                    return _operationResult.ErrorResult("Failed to update clinic:", new[] { "This email is already associated with another clinic!" });
                 }
 
-                UpdatePatientProperties(existingClinic, clinicRequest);
+                // Update other properties
+                UpdateClinicProperties(existingClinic, clinicRequest);
+
+                if (!string.IsNullOrEmpty(clinicRequest.Password))
+                {
+                    // Update password only if provided
+                    var passwordHasher = new PasswordHasher<ApplicationUser>();
+                    var hashedPassword = passwordHasher.HashPassword(existingClinic, clinicRequest.Password);
+                    existingClinic.PasswordHash = hashedPassword;
+                }
 
                 var result = await _userManager.UpdateAsync(existingClinic);
 
@@ -174,22 +186,13 @@ namespace MindMuse.Application.Services
             }
         }
 
-        private void UpdatePatientProperties(ApplicationUser existingClinic, ClinicRequest clinicRequest)
+        private void UpdateClinicProperties(ApplicationUser existingPatient, ClinicRequest clinicRequest)
         {
-            existingClinic.UserName = clinicRequest.UserName;
-            existingClinic.Email = clinicRequest.Email;
-            existingClinic.Name = clinicRequest.Name;
-            existingClinic.Surname = clinicRequest.Surname;
-            existingClinic.Role = clinicRequest.Role;
-            existingClinic.PhoneNumber = clinicRequest.PhoneNumber;
-            existingClinic.Address = clinicRequest.Address;
+            _mapper.Map(clinicRequest, existingPatient);
 
-            if (existingClinic is Clinic clinicToUpdate)
+            if (existingPatient is Clinic patientToUpdate)
             {
-                clinicToUpdate.ClinicName = clinicRequest.ClinicName;
-                clinicToUpdate.Location = clinicRequest.Location;
-                clinicToUpdate.CreatedDate = clinicRequest.CreatedDate;
-                clinicToUpdate.Doctors = _mapper.Map<List<Doctor>>(clinicRequest.Doctors);
+                _mapper.Map(clinicRequest, patientToUpdate);
             }
         }
     }

@@ -10,5 +10,6 @@ public partial class Admin : ApplicationUser
 { 
     public string? Test { get; set; }
     public int PersonalNumber { get; set; }
-    public DateTime DateOfBirth { get; set; }
+    public DateOnly DateOfBirth { get; set; }
+
 }

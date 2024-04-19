@@ -17,7 +17,7 @@ namespace MindMuse.AspNetCore.Controllers
             _clinicValidator = clinicValidator;
         }
 
-        [HttpPost("Createclinic")]
+        [HttpPost("CreateClinic")]
         public async Task<IActionResult> CreateClinic([FromBody] ClinicRequest clinicRequest)
         {
             _clinicValidator.ValidateAndThrow(clinicRequest);

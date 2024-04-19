@@ -8,10 +8,7 @@ namespace MindMuse.Application.Contracts.Models.Requests
 {
     public class AdminRequest
     {
-        public string Username { get; set; } = null!;
-
-        public string Email { get; set; } = null!;
-
-        public string Password { get; set; } = null!;
+        public int PersonalNumber { get; set; }
+        public DateOnly DateOfBirth { get; set; }
     }
 }
