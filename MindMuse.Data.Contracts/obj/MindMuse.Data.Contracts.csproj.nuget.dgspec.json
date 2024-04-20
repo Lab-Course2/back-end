@@ -101,7 +101,7 @@
         "projectName": "MindMuse.Data.Contracts",
         "projectPath": "C:\\Users\\artin\\source\\repos\\back-end\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj",
         "packagesPath": "C:\\Users\\artin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\artin\\Source\\Repos\\back-end\\MindMuse.Data.Contracts\\obj\\",
+        "outputPath": "C:\\Users\\artin\\source\\repos\\back-end\\MindMuse.Data.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\artin\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -27,6 +27,7 @@ namespace MindMuse.Application.Contracts.Validator
             RuleFor(x => x.PhoneNumber).NotEmpty().WithMessage("PhoneNumber is required.");
             RuleFor(x => x.Location).NotEmpty().WithMessage("Location is required.");
 
+
             //RuleForEach(x => x.Doctors).SetValidator(new CreateDoctorValidator()); // Assuming you have a validator for DoctorRequest
         }
     }
