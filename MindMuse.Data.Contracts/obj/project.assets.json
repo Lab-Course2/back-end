@@ -4034,19 +4034,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\artin\\.nuget\\packages\\": {}
+    "C:\\Users\\bleta\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\artin\\source\\repos\\back-end\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj",
+      "projectUniqueName": "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj",
       "projectName": "MindMuse.Data.Contracts",
-      "projectPath": "C:\\Users\\artin\\source\\repos\\back-end\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj",
-      "packagesPath": "C:\\Users\\artin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\artin\\Source\\Repos\\back-end\\MindMuse.Data.Contracts\\obj\\",
+      "projectPath": "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj",
+      "packagesPath": "C:\\Users\\bleta\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Data.Contracts\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\artin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bleta\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4060,8 +4060,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\artin\\source\\repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {
-              "projectPath": "C:\\Users\\artin\\source\\repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj"
+            "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {
+              "projectPath": "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj"
             }
           }
         }
@@ -4070,11 +4070,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -4096,7 +4091,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

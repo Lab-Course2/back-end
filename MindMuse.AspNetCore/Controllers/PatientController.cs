@@ -5,6 +5,8 @@ using MindMuse.Application.Contracts.Models.Requests;
 
 namespace MindMuse.AspNetCore.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class PatientController : Controller
     {
         private readonly IPatientService _patientService;
@@ -23,8 +25,6 @@ namespace MindMuse.AspNetCore.Controllers
             var result = await _patientService.CreatePatientAsync(patientRequest);
             return Ok(result);
         }
-
-
 
         [HttpPut("UpdatePatient/{personId}")]
         public async Task<IActionResult> UpdatePatient(string personId, [FromBody] PatientRequest patientRequest)

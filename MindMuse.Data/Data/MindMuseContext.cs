@@ -24,7 +24,7 @@ namespace MindMuse.Data.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=ARTIN;Initial Catalog=MindMuse;Integrated Security=True; TrustServerCertificate=true;");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-DJ0BRH7\\MSSQLSERVER01;Initial Catalog=MindMuse;Integrated Security=True; TrustServerCertificate=true;");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
