@@ -4,7 +4,6 @@ using MindMuse.Application.Contracts.Models.Requests;
 
 namespace MindMuse.AspNetCore.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
     public class AuthenticationController : ControllerBase
@@ -26,12 +25,14 @@ namespace MindMuse.AspNetCore.Controllers
 
             var result = await _userService.LogInAsync(loginRequest.Username, loginRequest.Password);
 
-            //if (result.Success)
-            //    return Ok();
-
-            return Ok(result);
-
-            return Unauthorized("Invalid username or password");
+            if (result != null && result is string token)
+            {
+                return Ok(new { token });
+            }
+            else
+            {
+                return Unauthorized("Invalid username or password");
+            }
 
         }
         [HttpGet("ConfirmEmail")]
