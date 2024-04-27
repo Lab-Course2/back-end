@@ -43,6 +43,9 @@ namespace MindMuse.Application
             });
 
 
+            serviceDescriptors.Configure<IdentityOptions>(
+                opt => opt.SignIn.RequireConfirmedEmail = true);
+
 
             serviceDescriptors.AddHttpContextAccessor();
             serviceDescriptors.Configure<IdentityOptions>(

@@ -1,12 +1,13 @@
 ﻿using MindMuse.Application.Contracts.Interfaces;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using MindMuse.Application.Contracts.Models.EmailConfig;
+using MailKit;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace MindMuse.Application.Contracts.Common
 {
@@ -41,5 +42,37 @@ namespace MindMuse.Application.Contracts.Common
             await _emailService.SendEmail(message);
 
         }
+        public async Task<string> GenerateJwtTokenAsync(string userId, string username, string userRole, Dictionary<string, string> OtherClaims = null)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, userId),
+                new Claim(ClaimTypes.Name, username),
+                new Claim(ClaimTypes.Role, userRole),
+            };
+
+            if (OtherClaims != null)
+            {
+                foreach (var claim in OtherClaims)
+                {
+                    claims.Add(new Claim(claim.Key, claim.Value));
+                }
+            }
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("eU8o5n@9^2LpWdG!iZtYrCw123456789012345"));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: "AppointEase",
+                audience: "AppointEase",
+                claims: claims,
+                expires: DateTime.Now.AddHours(3),
+                signingCredentials: creds
+            );
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            return tokenHandler.WriteToken(token);
+        }
+
     }
 }
