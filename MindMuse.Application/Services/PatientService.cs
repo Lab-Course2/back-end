@@ -8,6 +8,7 @@ using MindMuse.Application.Contracts.Models.Operations;
 using System.Data;
 using MindMuse.Application.Contracts.Models.Requests;
 using MindMuse.Data.Contracts.Interfaces;
+using Microsoft.Extensions.Configuration;
 
 
 namespace MindMuse.Application.Services
@@ -19,14 +20,17 @@ namespace MindMuse.Application.Services
         private readonly IMapper _mapper;
         private readonly IApplicationExtensions _common;
         private readonly IOperationResult _operationResult;
-
-        public PatientService(IRepository<Patient> patientRepository, UserManager<ApplicationUser> userManager, IMapper mapper, IApplicationExtensions common, IOperationResult operationResult)
+        private readonly IEmailServices _email;
+        private readonly IConfiguration _configuration;
+        public PatientService(IConfiguration _configuration, IEmailServices _email, IRepository<Patient> patientRepository, UserManager<ApplicationUser> userManager, IMapper mapper, IApplicationExtensions common, IOperationResult operationResult)
         {
             _patientRepository = patientRepository;
             _userManager = userManager;
             _mapper = mapper;
             _common = common;
             _operationResult = operationResult;
+            this._configuration = _configuration;
+            this._email = _email;
         }
 
         public async Task<OperationResult> CreatePatientAsync(PatientRequest patientRequest)
@@ -51,7 +55,8 @@ namespace MindMuse.Application.Services
                 }
 
                 await _userManager.AddToRoleAsync(user, user.Role);
-
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                _common.SendEmailConfirmation(token, user.Email);
                 _common.AddInformationMessage("Patient created successfully!");
 
                 return _operationResult.SuccessResult("Patient created successfully!");
@@ -66,6 +71,8 @@ namespace MindMuse.Application.Services
                 return _operationResult.ErrorResult($"Failed to create user:", new[] { ex.Message });
             }
         }
+
+
         private async Task<Patient> CheckIfPatientExists(string email, int personalNumber, string currentUserId)
         {
             var patients = await GetAllPatients();

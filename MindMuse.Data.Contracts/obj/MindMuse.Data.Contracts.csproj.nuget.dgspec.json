@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj": {}
+    "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {
+    "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj",
         "projectName": "MindMuse.Application.Contracts",
-        "projectPath": "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj",
-        "packagesPath": "C:\\Users\\bleta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\obj\\",
+        "projectPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Zamira\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\bleta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Zamira\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -89,17 +94,21 @@
         }
       }
     },
-    "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj": {
+    "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj",
         "projectName": "MindMuse.Data.Contracts",
-        "projectPath": "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj",
-        "packagesPath": "C:\\Users\\bleta\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Data.Contracts\\obj\\",
+        "projectPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Zamira\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Data.Contracts\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\bleta\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Zamira\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -107,14 +116,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {
-                "projectPath": "C:\\Users\\bleta\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj"
+              "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {
+                "projectPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj"
               }
             }
           }

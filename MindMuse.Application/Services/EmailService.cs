@@ -5,7 +5,7 @@ using MindMuse.Application.Contracts.Models.EmailConfig;
 
 namespace MindMuse.Application.Services
 {
-    public class EmailService : IEmailSerivces
+    public class EmailService : IEmailServices
     {
         private readonly EmailConfiguration _emailConfiguration;
 

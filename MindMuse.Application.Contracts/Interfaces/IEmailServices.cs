@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MindMuse.Application.Contracts.Interfaces
 {
-    public interface IEmailSerivces
+    public interface IEmailServices
     {
         Task SendEmail(Messages messages);
     }
