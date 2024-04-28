@@ -3,6 +3,7 @@ using AutoMapper;
 using MindMuse.Application.Contracts.Identity;
 using MindMuse.Application.Contracts.Models.Requests;
 using System.Numerics;
+using AppointEase.Application.Contracts.Models.Request;
 
 namespace MindMuse.Application.Mapper
 {
@@ -11,7 +12,7 @@ namespace MindMuse.Application.Mapper
         public MappingProfile()
         {
             CreateMap<Patient, PatientRequest>().ReverseMap().ForMember(dest => dest.Id, opt => opt.Ignore());
-            CreateMap<Admin, AdminRequest>().ReverseMap();
+            CreateMap<Admin, AdminRequest>().ReverseMap().ForMember(dest => dest.Id, opt => opt.Ignore());
             CreateMap<Doctor, DoctorRequest>().ReverseMap().ReverseMap().ForMember(dest => dest.Id, opt => opt.Ignore());
             CreateMap<ApplicationUser, PatientRequest>().ReverseMap();
             CreateMap<Clinic, ApplicationUser>();
@@ -20,6 +21,7 @@ namespace MindMuse.Application.Mapper
             CreateMap<ApplicationUser, PatientRequest>().ReverseMap();
             CreateMap<Patient, ApplicationUser>().ReverseMap();
             CreateMap<Clinic, ApplicationUser>().ReverseMap();
+            CreateMap<ApplicationUser, AdminRequest>().ReverseMap();
         }
     }
 }

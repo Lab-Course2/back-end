@@ -1,23 +1,24 @@
-﻿using MindMuse.Application.Contracts.Interfaces;
-using MindMuse.Application.Mapper;
-using MindMuse.Application.Services;
+﻿using AppointEase.Application.Contracts.Interfaces;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using MindMuse.Application.Contracts.Validator;
-using MindMuse.Application.Contracts.Common;
-using MindMuse.Application.Contracts.Models.Requests;
-using MindMuse.Application.Contracts.Models.Operations;
+using AppointEase.Application.Contracts.Validator;
+using AppointEase.Application.Contracts.Models.Request;
 using Microsoft.Extensions.Configuration;
-using MindMuse.Application.Contracts.Models.EmailConfig;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using MindMuse.Application.Mapper;
+using MindMuse.Application.Contracts.Interfaces;
+using MindMuse.Application.Services;
+using MindMuse.Application.Contracts.Models.Requests;
+using MindMuse.Application.Contracts.Common;
+using MindMuse.Application.Contracts.Validator;
+using MindMuse.Application.Contracts.Models.Operations;
+using AppointEase.Application.Services;
+using MindMuse.Application.Contracts.Models.EmailConfig;
 
-
-namespace MindMuse.Application
+namespace AppointEase.Application
 {
     public static class ApplicationInjection
     {
@@ -26,7 +27,7 @@ namespace MindMuse.Application
             serviceDescriptors.AddAutoMapper(typeof(MappingProfile));
             serviceDescriptors.AddScoped<IUserService, UserService>();
             serviceDescriptors.AddTransient<IValidator<PatientRequest>, CreatePatientValidator>();
-            serviceDescriptors.AddTransient<IValidator<DoctorRequest>, CreateDoctorValidator>();
+            serviceDescriptors.AddTransient<IValidator<DoctorRequest>, CreateDoctorValidator>(); 
             serviceDescriptors.AddScoped<IApplicationExtensions, ApplicationExtensions>();
             serviceDescriptors.AddScoped<IPatientService, PatientService>();
             serviceDescriptors.AddScoped<IApplicationExtensions, ApplicationExtensions>();
@@ -35,6 +36,12 @@ namespace MindMuse.Application
             serviceDescriptors.AddScoped<IClinicService, ClinicService>();
             serviceDescriptors.AddTransient<IValidator<ClinicRequest>, CreateClinicValidator>();
             serviceDescriptors.AddSingleton<IConfiguration>(configuration);
+            serviceDescriptors.AddScoped<IAdminService, AdminService>();
+            serviceDescriptors.AddTransient<IValidator<AdminRequest>, CreateAdminValidator>();
+
+            
+
+
             serviceDescriptors.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             serviceDescriptors.AddScoped<IUrlHelper>(serviceProvider =>
             {
