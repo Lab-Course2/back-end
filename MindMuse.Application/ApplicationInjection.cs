@@ -1,8 +1,8 @@
-﻿using AppointEase.Application.Contracts.Interfaces;
+﻿using MindMuse.Application.Contracts.Interfaces;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using AppointEase.Application.Contracts.Validator;
-using AppointEase.Application.Contracts.Models.Request;
+using MindMuse.Application.Contracts.Validator;
+using MindMuse.Application.Contracts.Models.Request;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -15,10 +15,10 @@ using MindMuse.Application.Contracts.Models.Requests;
 using MindMuse.Application.Contracts.Common;
 using MindMuse.Application.Contracts.Validator;
 using MindMuse.Application.Contracts.Models.Operations;
-using AppointEase.Application.Services;
+using MindMuse.Application.Services;
 using MindMuse.Application.Contracts.Models.EmailConfig;
 
-namespace AppointEase.Application
+namespace MindMuse.Application
 {
     public static class ApplicationInjection
     {

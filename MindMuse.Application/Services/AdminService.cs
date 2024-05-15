@@ -1,5 +1,5 @@
-using AppointEase.Application.Contracts.Interfaces;
-using AppointEase.Application.Contracts.Models.Request;
+using MindMuse.Application.Contracts.Interfaces;
+using MindMuse.Application.Contracts.Models.Request;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using MindMuse.Application.Contracts.Identity;
@@ -8,7 +8,7 @@ using MindMuse.Application.Contracts.Models.Operations;
 using MindMuse.Data.Contracts.Interfaces;
 using MindMuse.Data.Contracts.Models;
 
-namespace AppointEase.Application.Services
+namespace MindMuse.Application.Services
 {
     public class AdminService : IAdminService
     {

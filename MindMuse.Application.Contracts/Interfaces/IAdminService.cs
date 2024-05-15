@@ -1,7 +1,7 @@
-using AppointEase.Application.Contracts.Models.Request;
+using MindMuse.Application.Contracts.Models.Request;
 using MindMuse.Application.Contracts.Models.Operations;
 
-namespace AppointEase.Application.Contracts.Interfaces
+namespace MindMuse.Application.Contracts.Interfaces
 {
     public interface IAdminService
         {

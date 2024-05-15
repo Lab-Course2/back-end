@@ -1,11 +1,11 @@
-using AppointEase.Application.Contracts.Interfaces;
-using AppointEase.Application.Contracts.Models.Request;
+using MindMuse.Application.Contracts.Interfaces;
+using MindMuse.Application.Contracts.Models.Request;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MindMuse.Application.Contracts.Interfaces;
 
-namespace AppointEase.AspNetCore.Controllers
+namespace MindMuse.AspNetCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

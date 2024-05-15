@@ -11812,35 +11812,37 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {}
+    "C:\\Users\\Liza\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC\\back-end\\MindMuse.AspNetCore\\MindMuse.AspNetCore.csproj",
+      "projectUniqueName": "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.AspNetCore\\MindMuse.AspNetCore.csproj",
       "projectName": "MindMuse.AspNetCore",
-      "projectPath": "C:\\Users\\PC\\back-end\\MindMuse.AspNetCore\\MindMuse.AspNetCore.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC\\back-end\\MindMuse.AspNetCore\\obj\\",
+      "projectPath": "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.AspNetCore\\MindMuse.AspNetCore.csproj",
+      "packagesPath": "C:\\Users\\Liza\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.AspNetCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Liza\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\PC\\back-end\\MindMuse.Application\\MindMuse.Application.csproj": {
-              "projectPath": "C:\\Users\\PC\\back-end\\MindMuse.Application\\MindMuse.Application.csproj"
+            "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Application\\MindMuse.Application.csproj": {
+              "projectPath": "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Application\\MindMuse.Application.csproj"
             },
-            "C:\\Users\\PC\\back-end\\MindMuse.Data\\MindMuse.Data.csproj": {
-              "projectPath": "C:\\Users\\PC\\back-end\\MindMuse.Data\\MindMuse.Data.csproj"
+            "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Data\\MindMuse.Data.csproj": {
+              "projectPath": "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Data\\MindMuse.Data.csproj"
             }
           }
         }
@@ -11849,9 +11851,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "default"
       }
     },
     "frameworks": {
@@ -11926,7 +11925,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100-preview.7.23376.3\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   },

@@ -1,4 +1,4 @@
-﻿using AppointEase.Application.Contracts.Models.Request;
+﻿using MindMuse.Application.Contracts.Models.Request;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AppointEase.Application.Contracts.Validator
+namespace MindMuse.Application.Contracts.Validator
 {
     public class CreateAdminValidator : AbstractValidator<AdminRequest>
     {

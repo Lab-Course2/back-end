@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AppointEase.Application.Contracts.Models.Request
+namespace MindMuse.Application.Contracts.Models.Request
 {
     public class AdminRequest
     {

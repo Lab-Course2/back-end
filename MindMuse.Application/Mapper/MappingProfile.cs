@@ -3,7 +3,7 @@ using AutoMapper;
 using MindMuse.Application.Contracts.Identity;
 using MindMuse.Application.Contracts.Models.Requests;
 using System.Numerics;
-using AppointEase.Application.Contracts.Models.Request;
+using MindMuse.Application.Contracts.Models.Request;
 
 namespace MindMuse.Application.Mapper
 {
