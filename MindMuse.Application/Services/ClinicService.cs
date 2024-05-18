@@ -55,9 +55,6 @@ namespace MindMuse.Application.Services
 
                 await _userManager.AddToRoleAsync(user, user.Role);
 
-
-                var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-               
                 _common.AddInformationMessage("Clinic created successfully!");
 
                 return _operationResult.SuccessResult("Clinic created successfully!");
@@ -185,6 +182,11 @@ namespace MindMuse.Application.Services
                 return _operationResult.ErrorResult($"Failed to update clinic:", new[] { ex.Message });
             }
         }
+
+
+
+
+
 
         private void UpdateClinicProperties(ApplicationUser existingPatient, ClinicRequest clinicRequest)
         {

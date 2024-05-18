@@ -27,8 +27,9 @@ namespace MindMuse.Application
             serviceDescriptors.AddAutoMapper(typeof(MappingProfile));
             serviceDescriptors.AddScoped<IUserService, UserService>();
             serviceDescriptors.AddTransient<IValidator<PatientRequest>, CreatePatientValidator>();
-            serviceDescriptors.AddTransient<IValidator<DoctorRequest>, CreateDoctorValidator>(); 
+            serviceDescriptors.AddTransient<IValidator<DoctorRequest>, CreateDoctorValidator>();
             serviceDescriptors.AddScoped<IApplicationExtensions, ApplicationExtensions>();
+            serviceDescriptors.AddScoped<IDoctorService, DoctorService>();
             serviceDescriptors.AddScoped<IPatientService, PatientService>();
             serviceDescriptors.AddScoped<IApplicationExtensions, ApplicationExtensions>();
             serviceDescriptors.AddSingleton<IOperationResult, OperationResult>();
@@ -38,8 +39,9 @@ namespace MindMuse.Application
             serviceDescriptors.AddSingleton<IConfiguration>(configuration);
             serviceDescriptors.AddScoped<IAdminService, AdminService>();
             serviceDescriptors.AddTransient<IValidator<AdminRequest>, CreateAdminValidator>();
+            serviceDescriptors.AddTransient<IValidator<ClinicRequest>, UpdateClinicValidator>();
 
-            
+
 
 
             serviceDescriptors.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
