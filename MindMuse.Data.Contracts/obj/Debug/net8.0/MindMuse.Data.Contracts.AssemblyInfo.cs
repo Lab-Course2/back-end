@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MindMuse.Data.Contracts")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b35b4b9157cb3b98eaa82dba9fc156f7c9111ed6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e33727591e99ba09d604004b840bfd9351c9973")]
 [assembly: System.Reflection.AssemblyProductAttribute("MindMuse.Data.Contracts")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MindMuse.Data.Contracts")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
