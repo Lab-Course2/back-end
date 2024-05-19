@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using MindMuse.Application.Contracts.Interfaces;
 using MindMuse.Data.Contracts.Interfaces;
+using MindMuse.Application.Contracts.Models.Operations;
 
 namespace MindMuse.Data.Repositories
 {
@@ -42,23 +43,28 @@ namespace MindMuse.Data.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task AddAsync(T entity)
+        public async Task<OperationResult> AddAsync(T entity)
         {
             _context.Set<T>().Add(entity);
             await _context.SaveChangesAsync();
+
+            return new OperationResult(true, "Added Successfully");
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task<OperationResult> UpdateAsync(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
+            return new OperationResult(true, "Updated Successfully");
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task<OperationResult> DeleteAsync(string id)
         {
             var entity = await GetByIdAsync(id);
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
+
+            return new OperationResult(true, "Entity deleted successfully");
         }
     }
 }

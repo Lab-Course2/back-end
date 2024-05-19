@@ -23,10 +23,11 @@ namespace MindMuse.Data.Data
         public DbSet<Doctor> Doctor { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<AppointmentRequest> AppointmentRequests { get; set; }
+        public DbSet<AppointmentSlot> AppointmentSlot { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-EUO8BVU\\MSSQLSERVER01;Initial Catalog=MindMuse;Integrated Security=True; TrustServerCertificate=true;");
+            optionsBuilder.UseSqlServer("Data Source=LIZA;Initial Catalog=MindMuse;Integrated Security=True; TrustServerCertificate=true;");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -37,6 +38,8 @@ namespace MindMuse.Data.Data
             builder.Entity<Doctor>().ToTable("Doctor");
             builder.Entity<Clinic>().ToTable("Clinic");
             builder.Entity<Patient>().ToTable("Patient");
+
+            builder.Entity<AppointmentSlot>().ToTable("AppointmentSlot");
 
             // Adjust cascade behaviors for other relationships
 

@@ -17,6 +17,9 @@ using MindMuse.Application.Contracts.Validator;
 using MindMuse.Application.Contracts.Models.Operations;
 using MindMuse.Application.Services;
 using MindMuse.Application.Contracts.Models.EmailConfig;
+using MindMuse.Data.Contracts.Interfaces;
+using MindMuse.Data.Contracts.Models;
+using MindMuse.Data.Repositories;
 
 namespace MindMuse.Application
 {
@@ -40,13 +43,11 @@ namespace MindMuse.Application
             serviceDescriptors.AddScoped<IAdminService, AdminService>();
             serviceDescriptors.AddTransient<IValidator<AdminRequest>, CreateAdminValidator>();
             serviceDescriptors.AddTransient<IValidator<ClinicRequest>, UpdateClinicValidator>();
-
-
-
-
+            serviceDescriptors.AddScoped<IAppointmentSlotService, AppointmentSlotService>();
+            serviceDescriptors.AddTransient<IValidator<AppointmentSlotRequest>, CreateAppointmentSlotValidator>();
+            serviceDescriptors.AddScoped<IRepository<AppointmentSlot>, AppointmentSlotRepository>();
             serviceDescriptors.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
             serviceDescriptors.AddTransient<IValidator<PasswordRequest>, ValidatorPasswordRequest>();
-
             serviceDescriptors.AddScoped<IUrlHelper>(serviceProvider =>
             {
                 var actionContext = serviceProvider.GetRequiredService<IActionContextAccessor>().ActionContext;

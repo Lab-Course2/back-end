@@ -27,4 +27,8 @@
     <ProjectReference Include="..\MindMuse.Data.Contracts\MindMuse.Data.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

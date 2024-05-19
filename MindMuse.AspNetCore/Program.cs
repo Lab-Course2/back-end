@@ -18,6 +18,12 @@ builder.Services.AddControllers(options =>
     options.Filters.Add<GlobalExceptionFilter>();
 });
 
+builder.Services.AddLogging(builder =>
+{
+    builder.SetMinimumLevel(LogLevel.Information);
+    builder.AddConsole();
+});
+
 ApplicationInjection.AddApplicationServices(builder.Services, builder.Configuration);
 DataInjectionServices.AddDataServices(builder.Services, builder.Configuration);
 

@@ -12,8 +12,8 @@ namespace MindMuse.Data.Contracts.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int AppointmentRequestId { get; set; }
-        public string DoctorId { get; set; }
+        public string AppointmentRequestId { get; set; } = Guid.NewGuid().ToString();
+        public string AppointmentSlotId { get; set; }
         public string PatientId { get; set; }
         public string MeetingReason { get; set; }
         public string MeetingRequestDescription { get; set; }
@@ -21,10 +21,7 @@ namespace MindMuse.Data.Contracts.Models
         public bool IsAccepted { get; set; }
         public int Priority { get; set; }
         public DateTime? ResponseDateTime { get; set; } = DateTime.Now;
-
-
         public virtual Doctor Doctor { get; set; }
         public virtual Patient Patient { get; set; }
-
     }
 }
