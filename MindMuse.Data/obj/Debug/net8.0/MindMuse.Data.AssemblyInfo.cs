@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MindMuse.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+887d69e4dbe9da78b50dc5b1d3d7139c4fac5773")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bed473eb79a21293e4ba25a014c681cda58c86a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("MindMuse.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MindMuse.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

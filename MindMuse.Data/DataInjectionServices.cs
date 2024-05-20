@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MindMuse.Application.Contracts.Identity;
 using MindMuse.Application.Contracts.Interfaces;
 using MindMuse.Data.Repositories;
-using AppointEase.Data.Repositories;
+using MindMuse.Data.Repositories;
 using MindMuse.Data.Contracts.Interfaces;
 
 namespace MindMuse.Data

@@ -2,7 +2,7 @@
 using MindMuse.Data.Data;
 using MindMuse.Data.Repositories;
 
-namespace AppointEase.Data.Repositories
+namespace MindMuse.Data.Repositories
 {
     public class UserRepository : Repository<Patient>
     {

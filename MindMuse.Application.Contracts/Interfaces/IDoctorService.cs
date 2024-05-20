@@ -15,5 +15,6 @@ namespace MindMuse.Application.Contracts.Interfaces
         Task<OperationResult> CreateDoctorAsync(DoctorRequest personDto);
         Task<OperationResult> UpdateDoctor(string personId, DoctorRequest personDto);
         Task<OperationResult> DeleteDoctor(string personId);
+        Task<IEnumerable<object>> FilterDoctors(Func<IQueryable<DoctorRequest>, IQueryable<object>> query);
     }
 }
