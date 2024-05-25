@@ -25,6 +25,14 @@ namespace MindMuse.AspNetCore.Controllers
             var result = await _appointmentSlotService.CreateAppointmentSlot(appointmentSlotRequest);
             return Ok(result);
         }
+        [HttpPost("CreateByWeeks")]
+        public async Task<IActionResult> CreateAppointmentSlotByWeeks([FromBody] AppointmentSlotRequest appointmentSlotRequest, int numberOfWeeks)
+        {
+            _appointmentValidator.ValidateAndThrow(appointmentSlotRequest);
+            var result = await _appointmentSlotService.CreateAppointmentSlotByWeeks(appointmentSlotRequest, numberOfWeeks);
+            return Ok(result);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAllAppointmentSlots()
         {
