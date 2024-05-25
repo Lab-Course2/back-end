@@ -33,5 +33,6 @@ namespace MindMuse.Application.Contracts.Models.Requests
         public string ClinicId { get; set; }
         public string? PhotoData { get; set; }
         public string? PhotoFormat { get; set; }
+        public string? Description { get; set; }
     }
 }
