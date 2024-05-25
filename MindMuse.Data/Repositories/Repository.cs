@@ -66,5 +66,10 @@ namespace MindMuse.Data.Repositories
 
             return new OperationResult(true, "Entity deleted successfully");
         }
+        public async Task<IEnumerable<T>> GetDoctorsByClinicId(string clinicId)
+        {
+            // Assuming you have a DbSet<Doctor> named Doctors in your DbContext
+            return (IEnumerable<T>)await Task.FromResult(_context.Doctor.Where(d => d.ClinicId == clinicId).ToList());
+        }
     }
 }

@@ -132,6 +132,18 @@ namespace MindMuse.Application.Services
             return _mapper.Map<DoctorRequest>(doctor);
         }
 
+        public async Task<IEnumerable<DoctorRequest>> GetAllDoctorsByClinicId(string clinicId)
+        {
+            // Assuming there's a method in your repository or service layer to get doctors by clinic ID
+            var doctors = await _doctorRepository.GetDoctorsByClinicId(clinicId);
+
+            // Map the retrieved doctors to DoctorRequest DTOs
+            return _mapper.Map<IEnumerable<DoctorRequest>>(doctors);
+        }
+
+
+
+
         public async Task<OperationResult> UpdateDoctor(string userId, DoctorRequest doctorRequest)
         {
             try
