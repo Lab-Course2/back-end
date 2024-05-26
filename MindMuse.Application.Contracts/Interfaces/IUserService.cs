@@ -13,6 +13,8 @@ namespace MindMuse.Application.Contracts.Interfaces
         Task<Object> LogInAsync(string username, string password);
         Task<OperationResult> UserForgotPassword(string email);
         Task<OperationResult> UserResetPassword(PasswordRequest passwordRequest);
+        Task<OperationResult> UserChangePassword(PasswordRequest passwordRequest);
+
 
     }
 }
