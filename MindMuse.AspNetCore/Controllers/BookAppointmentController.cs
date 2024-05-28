@@ -25,6 +25,13 @@ namespace MindMuse.AspNetCore.Controllers
             var result = await _bookappointmentService.CreateBookAppointment(bookappointmentRequest);
             return Ok(result);
         }
+        [HttpPut("Accept/{id}")]
+        public async Task<IActionResult> AcceptAppointment(string id)
+        {
+            var operationResult = await _bookappointmentService.AcceptBookAppointment(id);
+
+            return Ok(operationResult);
+        }
         [HttpGet]
         public async Task<IActionResult> GetAllBookAppointment()
         {
