@@ -1,5 +1,6 @@
 ﻿using MindMuse.Application.Contracts.Models;
 using MindMuse.Application.Contracts.Models.Operations;
+using MindMuse.Data.Contracts.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace MindMuse.Data.Contracts.Interfaces
         Task<OperationResult> UpdateAsync(T entity);
         Task<OperationResult> DeleteAsync(string id);
         Task<IEnumerable<T>> GetDoctorsByClinicId(string clinicId);
+        Task<IEnumerable<AppointmentSlot>> GetAppointmentSlotsByDoctorId(string doctorId);
+        Task<IEnumerable<AppointmentSlot>> GetMyDoctorsAppointmentSlots(string clinicId);
     }
 }

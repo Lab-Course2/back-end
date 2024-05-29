@@ -5,6 +5,7 @@ using MindMuse.Application.Contracts.Models.Requests;
 
 namespace MindMuse.AspNetCore.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class AppointmentSlotController : ControllerBase
@@ -38,6 +39,18 @@ namespace MindMuse.AspNetCore.Controllers
         {
             var appointmentSlots = await _appointmentSlotService.GetAllAppointmentSlots();
             return Ok(appointmentSlots);
+        }
+        [HttpGet("ByDoctorId")]
+        public async Task<IActionResult> GetAllAppointmentSlotsByDoctorId(string doctorId)
+        {
+            var appointmentSlotsByDoctorId = await _appointmentSlotService.GetAppointmentSlotsByDoctorId(doctorId);
+            return Ok(appointmentSlotsByDoctorId);
+        }
+        [HttpGet("GetMyDoctorsAppointmentSlots")]
+        public async Task<IActionResult> GetMyDoctorsAppointmentSlots(string clinicID)
+        {
+            var appointmentSlotsByDoctorId = await _appointmentSlotService.GetMyDoctorsAppointmentSlots(clinicID);
+            return Ok(appointmentSlotsByDoctorId);
         }
 
         [HttpGet("{id}")]

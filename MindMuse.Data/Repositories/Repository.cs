@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MindMuse.Application.Contracts.Interfaces;
 using MindMuse.Data.Contracts.Interfaces;
 using MindMuse.Application.Contracts.Models.Operations;
+using MindMuse.Data.Contracts.Models;
 
 namespace MindMuse.Data.Repositories
 {
@@ -68,8 +69,17 @@ namespace MindMuse.Data.Repositories
         }
         public async Task<IEnumerable<T>> GetDoctorsByClinicId(string clinicId)
         {
-            // Assuming you have a DbSet<Doctor> named Doctors in your DbContext
             return (IEnumerable<T>)await Task.FromResult(_context.Doctor.Where(d => d.ClinicId == clinicId).ToList());
+        }
+
+        public async Task<IEnumerable<AppointmentSlot>> GetAppointmentSlotsByDoctorId(string doctorId)
+        {
+            return await Task.FromResult(_context.AppointmentSlot.Where(a => a.DoctorId == doctorId).ToList());
+        }
+
+        public async Task<IEnumerable<AppointmentSlot>> GetMyDoctorsAppointmentSlots(string clinicId)
+        {
+            return await Task.FromResult(_context.AppointmentSlot.Where(c => c.ClinicId == clinicId).ToList());
         }
     }
 }

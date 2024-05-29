@@ -13,6 +13,8 @@ namespace MindMuse.Application.Contracts.Interfaces
         Task<AppointmentSlotRequest> GetAppointmentById(string id);
         Task<IEnumerable<AppointmentSlotRequest>> GetAllAppointmentSlots();
         Task<OperationResult> CreateAppointmentSlot(AppointmentSlotRequest appointmentSlot);
+        Task<IEnumerable<AppointmentSlotRequest>> GetAppointmentSlotsByDoctorId(string stringid);
+        Task<IEnumerable<AppointmentSlotRequest>> GetMyDoctorsAppointmentSlots(string clinicId);
         Task<OperationResult> CreateAppointmentSlotByWeeks(AppointmentSlotRequest appointmentSlot, int numberOfWeeks);
         Task<OperationResult> UpdateAppointmentSlot(string id, AppointmentSlotRequest appointmentSlot);
         Task<OperationResult> DeleteAsync(string id);

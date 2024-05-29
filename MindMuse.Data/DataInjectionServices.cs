@@ -32,6 +32,8 @@ namespace MindMuse.Data
             serviceDescriptors.AddScoped<IRepository<Admin>, AdminRepository>();
             serviceDescriptors.AddScoped<IRepository<Clinic>, ClinicRepository>();
             serviceDescriptors.AddScoped<IRepository<Doctor>, DoctorReporsitory>();
+            serviceDescriptors.AddScoped<IRepository<AppointmentSlot>, AppointmentSlotRepository>();
+            serviceDescriptors.AddScoped<IRepository<BookAppointment>, BookAppointmentRepository>();
 
         }
     }
