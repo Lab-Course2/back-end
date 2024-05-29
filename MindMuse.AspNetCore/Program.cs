@@ -1,18 +1,37 @@
-using System.Globalization;
-using MindMuse.Application.Filters;
-using MindMuse.Application;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using MindMuse.Data;
-using MindMuse.Application.Contracts.Interfaces;
-using MindMuse.Application.Contracts.Models.Operations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using MindMuse.Application.Filters;
+using MindMuse.Application;
+using MindMuse.Data.Contracts.Interfaces;
 using System.Text;
 
+// Pjesa tjetër e konfigurimeve ekzistuese
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 builder.Configuration.AddJsonFile("appsettings.json");
 
+//builder.Services.AddScoped<AppointmentMongoService>();
+// Shtimi i MongoDBSettings
+builder.Services.Configure<MongoDBSettings>(
+    configuration.GetSection(nameof(MongoDBSettings)));
+
+builder.Services.AddSingleton<IMongoDBSettings>(sp =>
+    sp.GetRequiredService<IOptions<MongoDBSettings>>().Value);
+
+builder.Services.AddSingleton<MongoClient>(s =>
+    new MongoClient(configuration.GetValue<string>("MongoDBSettings:ConnectionString")));
+
+builder.Services.AddScoped(s =>
+    s.GetRequiredService<MongoClient>().GetDatabase(configuration.GetValue<string>("MongoDBSettings:DatabaseName")));
+
+
+
+
+// Pjesa tjetër e konfigurimeve ekzistuese
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<GlobalExceptionFilter>();
@@ -52,16 +71,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-// Add ASP.NET Core Identity
-//builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-//    .AddEntityFrameworkStores<AppointEaseContext>()
-//    .AddDefaultTokenProviders();
-
 // Other service registrations (Application services, Data services, Swagger, etc.)
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API Name", Version = "v1" });
-
 
     // Add customization for DateOnly serialization
     c.MapType<DateOnly>(() => new OpenApiSchema
@@ -71,10 +84,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
 var app = builder.Build();
-
-
 
 if (app.Environment.IsDevelopment())
 {

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MindMuse.AspNetCore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e5728e498f9cae226f58aef36451ba248a538d3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+664edda8bbc6894509ef98766ec9668cf304ddd5")]
 [assembly: System.Reflection.AssemblyProductAttribute("MindMuse.AspNetCore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MindMuse.AspNetCore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
