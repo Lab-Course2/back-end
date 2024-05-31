@@ -8,15 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace MindMuse.Http.Validations
+namespace MindMuse.Http
 {
-    public class StripeInjection
+    public class Http
     {
-        public static void AddApplicationServices(IServiceCollection serviceDescriptors, IConfiguration configuration)
+        public static void AddHttpModule(IServiceCollection serviceDescriptors, IConfiguration configuration)
         {
+            serviceDescriptors.AddScoped<ITwilioService, TwilioService>();
             serviceDescriptors.AddScoped<IStripeApi, StripeService>();
-
         }
     }
 }

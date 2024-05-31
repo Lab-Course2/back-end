@@ -8,10 +8,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using MindMuse.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 builder.Configuration.AddJsonFile("appsettings.json");
+Http.AddHttpModule(builder.Services, builder.Configuration);
 
 builder.Services.AddControllers(options =>
 {

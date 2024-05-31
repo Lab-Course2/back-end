@@ -19,6 +19,7 @@
     <ProjectReference Include="..\MindMuse.Application.Contracts\MindMuse.Application.Contracts.csproj" />
     <ProjectReference Include="..\MindMuse.Data.Contracts\MindMuse.Data.Contracts.csproj" />
     <ProjectReference Include="..\MindMuse.Data\MindMuse.Data.csproj" />
+    <ProjectReference Include="..\MindMuse.Http.Contracts\MindMuse.Http.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

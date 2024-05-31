@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MindMuse.Http.Services
 {
-    public class StripeService : IStripeService
+    public class StripeService : IStripeApi
     {
         public StripeService()
         {
@@ -17,12 +17,12 @@ namespace MindMuse.Http.Services
 
         public async Task<string> Charge(PaymentRequest paymentRequest)
         {
-            return await RestService.For<IStripeService>("https://api.stripe.com").Charge(paymentRequest);
+            return await RestService.For<IStripeApi>("https://api.stripe.com").Charge(paymentRequest);
         }
 
         public async Task<string> Refund(RefundRequest refundRequest)
         {
-            return await RestService.For<IStripeService>("https://api.stripe.com").Refund(refundRequest);
+            return await RestService.For<IStripeApi>("https://api.stripe.com").Refund(refundRequest);
         }
     }
 }
