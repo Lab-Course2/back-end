@@ -30,6 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MindMuse.Application\MindMuse.Application.csproj" />
     <ProjectReference Include="..\MindMuse.Data\MindMuse.Data.csproj" />
+    <ProjectReference Include="..\MindMuse.Http.Contracts\MindMuse.Http.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
