@@ -17,7 +17,9 @@ namespace MindMuse.Application.Contracts.Validator
             RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required.");
             RuleFor(x => x.Surname).NotEmpty().WithMessage("Surname is required.");
             RuleFor(x => x.Role).NotEmpty().WithMessage("Role is required.");
-            RuleFor(x => x.Email).NotEmpty().WithMessage("Email is required.").EmailAddress().WithMessage("Invalid email format.");
+            RuleFor(x => x.Email)
+           .NotEmpty().WithMessage("Email is required.")
+           .Matches(@"^[^\s@]+@[^\s@]+\.[^\s@]+(\.[^\s@]+)*$").WithMessage("Invalid email format.");
             RuleFor(x => x.Password).Must(password => password == null || (password.Length >= 8
                                            && Regex.IsMatch(password, "[A-Z]")
                                            && Regex.IsMatch(password, "[a-z]")
@@ -27,10 +29,22 @@ namespace MindMuse.Application.Contracts.Validator
             //RuleFor(x => x.DoctorName).NotEmpty().WithMessage("DoctorName is required.");
             RuleFor(x => x.Specialisation).NotEmpty().WithMessage("Specialisation is required.");
             RuleFor(x => x.Description).NotEmpty().WithMessage("Description is required.");
-            RuleFor(x => x.DateOfBirth).NotEmpty().WithMessage("DateOfBirth is required.")
-          .Must(date => date != default(DateOnly)).WithMessage("Invalid DateOfBirth.");
+            RuleFor(x => x.DateOfBirth)
+              .NotEmpty().WithMessage("DateOfBirth is required.")
+              .Must(date => date != default(DateOnly)).WithMessage("Invalid DateOfBirth.")
+              .Must(dateOfBirth => IsAtLeast21YearsOld(dateOfBirth)).WithMessage("You must be at least 21 years old.");
 
-            //RuleForEach(x => x.Doctors).SetValidator(CreateDoctorValidator()); // Assuming you have a validator for DoctorRequest
+        }
+        private bool IsAtLeast21YearsOld(DateOnly dateOfBirth)
+        {
+            var today = DateOnly.FromDateTime(DateTime.Today);
+            var age = today.Year - dateOfBirth.Year;
+
+            // Subtract one if the birthday for this year hasn't occurred yet
+            if (dateOfBirth.DayOfYear > today.DayOfYear)
+                age--;
+
+            return age >= 21;
         }
     }
 }

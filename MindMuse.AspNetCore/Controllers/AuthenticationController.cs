@@ -87,5 +87,18 @@ namespace MindMuse.AspNetCore.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ApplicationUserRequest>>> GetUsers()
+        {
+            var users = await _userService.GetUsers();
+            return Ok(users);
+        }
+        [HttpGet("userId")]
+        public async Task<IActionResult> GetUser(string id)
+        {
+            var user = await _userService.GetUser(id);
+            return Ok(user);
+        }
     }
 }

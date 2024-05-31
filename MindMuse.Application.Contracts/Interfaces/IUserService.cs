@@ -14,7 +14,8 @@ namespace MindMuse.Application.Contracts.Interfaces
         Task<OperationResult> UserForgotPassword(string email);
         Task<OperationResult> UserResetPassword(PasswordRequest passwordRequest);
         Task<OperationResult> UserChangePassword(PasswordRequest passwordRequest);
-
+        Task<IEnumerable<ApplicationUserRequest>> GetUsers();
+        Task<ApplicationUserRequest> GetUser(string id);
 
     }
 }

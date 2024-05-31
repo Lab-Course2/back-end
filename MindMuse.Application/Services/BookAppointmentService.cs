@@ -182,10 +182,10 @@ namespace MindMuse.Application.Services
 
                 // Update appointment slot properties
                 appointmentSlot.IsBooked = false;
+                appointmentSlot.IsAccepted = false;
                 appointmentSlot.PatientId = null;
 
                 await _appointmentSlotRepository.UpdateAsync(appointmentSlot);
-
                 // Delete the appointment
                 await _bookappointmentRepository.DeleteAsync(id);
 
@@ -230,6 +230,67 @@ namespace MindMuse.Application.Services
                 return _operationResult.ErrorResult($"Failed to accept Appointment:", new[] { exception.Message });
             }
         }
+        public async Task<OperationResult> CancelBookAppointment(string id)
+        {
+            try
+            {
+                var appointment = await _bookappointmentRepository.GetByIdAsync(id);
 
+                if (appointment == null)
+                {
+                    return _operationResult.ErrorResult($"Failed to cancel Appointment: Appointment with ID {id} not found.", new[] { "Appointment not found." });
+                }
+
+                // Update IsCanceled to "true"
+                appointment.IsCanceled = true;
+
+                return _operationResult.SuccessResult("Appointment Canceled Successfully!");
+            }
+            catch (Exception exception)
+            {
+                _common.AddErrorMessage($"Error canceling Appointment: {exception.Message}");
+                return _operationResult.ErrorResult($"Failed to cancel Appointment:", new[] { exception.Message });
+            }
+        }
+        public async Task<OperationResult> CancelBookAppointmentFromPatient(string id)
+        {
+            try
+            {
+                var appointment = await _bookappointmentRepository.GetByIdAsync(id);
+
+                if (appointment == null)
+                {
+                    return _operationResult.ErrorResult($"Failed to cancel Appointment: Appointment with ID {id} not found.", new[] { "Appointment not found." });
+                }
+
+                // Update IsCanceled to "true"
+                appointment.IsCanceled = true;
+
+                // Update the appointment
+                await _bookappointmentRepository.UpdateAsync(appointment);
+
+                // Retrieve the corresponding appointment slot
+                var appointmentSlot = await _appointmentSlotRepository.GetByIdAsync(appointment.AppointmentSlotId);
+                if (appointmentSlot != null)
+                {
+                    // Update appointment slot properties
+                    appointmentSlot.IsBooked = false;
+                    appointmentSlot.IsAccepted = false;
+                    appointmentSlot.PatientId = null;
+                    // Update the appointment slot
+                    var result = await _appointmentSlotRepository.UpdateAsync(appointmentSlot);
+                    if (result.Succeeded)
+                    {
+                        return _operationResult.SuccessResult("Appointment Canceledddd Successfully!");
+                    }
+                }
+                return _operationResult.SuccessResult("Appointment Canceled Successfully!");
+            }
+            catch (Exception exception)
+            {
+                _common.AddErrorMessage($"Error canceling Appointment: {exception.Message}");
+                return _operationResult.ErrorResult($"Failed to cancel Appointment:", new[] { exception.Message });
+            }
+        }
     }
 }

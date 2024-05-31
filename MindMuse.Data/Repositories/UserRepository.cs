@@ -1,13 +1,13 @@
-﻿using MindMuse.Data.Contracts.Models;
+﻿using MindMuse.Application.Contracts.Identity;
+using MindMuse.Data.Contracts.Models;
 using MindMuse.Data.Data;
 using MindMuse.Data.Repositories;
 
 namespace MindMuse.Data.Repositories
 {
-    public class UserRepository : Repository<Patient>
+    public class UsersRepository : Repository<ApplicationUser>
     {
-        public UserRepository(MindMuseContext context) : base(context)
-        {
-        }
+        public UsersRepository(MindMuseContext context) : base(context)
+        { }
     }
 }
