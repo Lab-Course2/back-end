@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {}
+    "C:\\Users\\Zamira\\Desktop\\Labb2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {
+    "C:\\Users\\Zamira\\Desktop\\Labb2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\Zamira\\Desktop\\Labb2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj",
         "projectName": "MindMuse.Application.Contracts",
-        "projectPath": "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj",
-        "packagesPath": "C:\\Users\\Liza\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Liza\\Source\\Repos\\back-end\\MindMuse.Application.Contracts\\obj\\",
+        "projectPath": "C:\\Users\\Zamira\\Desktop\\Labb2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Zamira\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Zamira\\Desktop\\Labb2\\MindMuse.Application.Contracts\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Liza\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Zamira\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -101,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

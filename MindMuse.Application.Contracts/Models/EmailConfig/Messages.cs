@@ -15,7 +15,7 @@ namespace MindMuse.Application.Contracts.Models.EmailConfig
         public Messages(IEnumerable<string> To, string Subject, string Content)
         {
             this.To = new List<MailboxAddress>();
-            this.To.AddRange(To.Select(x => new MailboxAddress("AppointEase", x)));
+            this.To.AddRange(To.Select(x => new MailboxAddress("MindMuse", x)));
             this.Subject = Subject;
             this.Content = Content;
         }

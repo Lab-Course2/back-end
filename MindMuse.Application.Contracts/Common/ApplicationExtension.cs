@@ -40,7 +40,7 @@ namespace MindMuse.Application.Contracts.Common
             var confirmationLink = $"{confirmationBaseUrl.TrimEnd('/')}/Authentication/ConfirmEmail?token={Uri.EscapeDataString(token)}&email={Uri.EscapeDataString(email)}";
 
             var htmlContent = HtmlContnet(confirmationLink,
-                " <p>Thank you for registering with AppointEase.</p>\n<p>Please click the button below to confirm your email address.</p>",
+                " <p>Thank you for registering with MindMuse.</p>\n<p>Please click the button below to confirm your email address.</p>",
                 "Email Confirmation");
 
             var message = new Messages(new string[] { email }, "Confirmation Email", htmlContent);
