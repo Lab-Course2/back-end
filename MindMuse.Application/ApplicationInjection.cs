@@ -49,6 +49,7 @@ namespace MindMuse.Application
             serviceDescriptors.AddScoped<IBookAppointmentService, BookAppointmentService>();
             serviceDescriptors.AddScoped<IValidator<BookAppointmentRequest>, CreateBookAppointmentValidator>();
             serviceDescriptors.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            serviceDescriptors.AddScoped<IUserService, UserService>();
             serviceDescriptors.AddTransient<IValidator<PasswordRequest>, ValidatorPasswordRequest>();
             serviceDescriptors.AddScoped<IUrlHelper>(serviceProvider =>
             {

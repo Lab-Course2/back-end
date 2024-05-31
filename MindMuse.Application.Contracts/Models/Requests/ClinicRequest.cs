@@ -17,7 +17,7 @@ namespace MindMuse.Application.Contracts.Models.Requests
         public string Id { get; private set; }
         public string UserName { get; set; }
         public string Name { get; set; }
-        public string Surname { get; set; }
+        public string? Surname { get; set; }
         public string Role { get; set; }
         [EmailAddress]
         public string Email { get; set; }
@@ -27,6 +27,8 @@ namespace MindMuse.Application.Contracts.Models.Requests
         public string? Location { get; set; }
         public DateOnly? CreatedDate { get; set; }
         public string? OtherDetails { get; set; }
+        public string? PhotoData { get; set; }
+        public string? PhotoFormat { get; set; }
         public ICollection<DoctorRequest> Doctors { get; set; } = new List<DoctorRequest>();
 
 

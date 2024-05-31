@@ -18,6 +18,7 @@ namespace MindMuse.Application.Contracts.Models.Requests
         public string MeetingReason { get; set; }
         public string MeetingRequestDescription { get; set; }
         public bool IsAccepted { get; set; }
+        public bool IsCanceled { get; set; }
         public DateTime? ResponseDateTime { get; set; } = DateTime.Now;
     }
 }
