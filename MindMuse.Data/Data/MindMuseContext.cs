@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MindMuse.Application.Contracts.Identity;
+using MindMuse.Application.Contracts.Models.Requests;
 
 namespace MindMuse.Data.Data
 {
@@ -22,7 +23,6 @@ namespace MindMuse.Data.Data
         public DbSet<Clinic> Clinic { get; set; }
         public DbSet<Doctor> Doctor { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
-        public DbSet<AppointmentRequest> AppointmentRequests { get; set; }
         public DbSet<AppointmentSlot> AppointmentSlot { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -38,7 +38,7 @@ namespace MindMuse.Data.Data
             builder.Entity<Doctor>().ToTable("Doctor");
             builder.Entity<Clinic>().ToTable("Clinic");
             builder.Entity<Patient>().ToTable("Patient");
-
+            builder.Entity<Appointment>().ToTable("Appointments");
             builder.Entity<AppointmentSlot>().ToTable("AppointmentSlot");
 
             // Adjust cascade behaviors for other relationships

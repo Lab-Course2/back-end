@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dFV5SfPVme+tMC3h85tpG+YstN4CU31t8OrmpVYyaZvvnir5NROWqI1E1xFELc0v9IQSJKr+3RGQ0GD3wVnDzQ==",
+  "dgSpecHash": "9cW3VXgJteBlZVswkS/7aeN0MHkjD8E32Q1zsorPjtR3745KEvGEaDaFieWdikOjCHJe7z1yHFqmILtZPf9Xfw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Zamira\\Desktop\\Labb2\\MindMuse.Data\\MindMuse.Data.csproj",
+  "projectFilePath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Data\\MindMuse.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zamira\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Zamira\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

@@ -25,6 +25,7 @@ namespace MindMuse.Application.Mapper
             CreateMap<ApplicationUser, AdminRequest>().ReverseMap();
             CreateMap<AppointmentSlot, AppointmentSlotRequest>().ReverseMap().ForMember(dest => dest.AppointmentSlotId, opt => opt.Ignore());
             CreateMap<ApplicationUser, ApplicationUserRequest>().ReverseMap().ForMember(dest => dest.Id, opt => opt.Ignore());
+            CreateMap<Appointment, AppointmentRequest>().ReverseMap().ForMember(dest => dest.AppointmentId, opt => opt.Ignore());
         }
     }
 }

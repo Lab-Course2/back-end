@@ -21,5 +21,6 @@ namespace MindMuse.Data.Contracts.Interfaces
         Task<IEnumerable<T>> GetDoctorsByClinicId(string clinicId);
         Task<IEnumerable<AppointmentSlot>> GetAppointmentSlotsByDoctorId(string doctorId);
         Task<IEnumerable<AppointmentSlot>> GetMyDoctorsAppointmentSlots(string clinicId);
+        Task<string> GetPhoneNumberByIdAsync(string userId);
     }
 }

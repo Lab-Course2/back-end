@@ -26,14 +26,15 @@ namespace MindMuse.Data
             serviceDescriptors.AddIdentity<ApplicationUser, IdentityRole>()
                  .AddEntityFrameworkStores<MindMuseContext>()
                  .AddDefaultTokenProviders();
-
             serviceDescriptors.AddScoped<MindMuseContext>();
-            serviceDescriptors.AddScoped<IRepository<Patient>, UserRepository>();
+            serviceDescriptors.AddScoped<IRepository<Patient>, PatientRepository>();
             serviceDescriptors.AddScoped<IRepository<Admin>, AdminRepository>();
             serviceDescriptors.AddScoped<IRepository<Clinic>, ClinicRepository>();
             serviceDescriptors.AddScoped<IRepository<Doctor>, DoctorReporsitory>();
             serviceDescriptors.AddScoped<IRepository<AppointmentSlot>, AppointmentSlotRepository>();
             serviceDescriptors.AddScoped<IRepository<BookAppointment>, BookAppointmentRepository>();
+            serviceDescriptors.AddScoped<IRepository<ApplicationUser>, UsersRepository>();
+            serviceDescriptors.AddScoped<IRepository<Appointment>, AppointmentRepository>();
 
         }
     }
