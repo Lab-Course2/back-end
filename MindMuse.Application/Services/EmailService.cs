@@ -22,10 +22,13 @@ namespace MindMuse.Application.Services
         private MimeMessage CreateEmailMessage(Messages messages)
         {
             var mimeMessage = new MimeMessage();
-            mimeMessage.From.Add(new MailboxAddress("email", _emailConfiguration.From));
+            mimeMessage.From.Add(new MailboxAddress("MindMuse System", _emailConfiguration.From));
             mimeMessage.To.AddRange(messages.To);
             mimeMessage.Subject = messages.Subject;
-            mimeMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text) { Text = messages.Content };
+            var bodyBuilder = new BodyBuilder();
+            bodyBuilder.HtmlBody = messages.Content;
+
+            mimeMessage.Body = bodyBuilder.ToMessageBody();
 
             return mimeMessage;
 
@@ -36,12 +39,17 @@ namespace MindMuse.Application.Services
 
             try
             {
-                client.Connect(_emailConfiguration.SmtpServer, _emailConfiguration.Port, true);
+                client.Connect(_emailConfiguration.SmtpServer, _emailConfiguration.Port, MailKit.Security.SecureSocketOptions.StartTls);
+
                 client.AuthenticationMechanisms.Remove("XOAUTH2");
+
                 client.Authenticate(_emailConfiguration.Username, _emailConfiguration.Password);
 
 
                 client.Send(message);
+
+
+
             }
             catch (Exception ex)
             {
@@ -49,8 +57,10 @@ namespace MindMuse.Application.Services
             }
             finally
             {
+
                 client.Disconnect(true);
                 client.Dispose();
+
             }
 
         }
