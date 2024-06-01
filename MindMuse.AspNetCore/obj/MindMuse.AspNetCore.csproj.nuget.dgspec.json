@@ -150,6 +150,9 @@
               },
               "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Http.Contracts\\MindMuse.Http.Contracts.csproj": {
                 "projectPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Http.Contracts\\MindMuse.Http.Contracts.csproj"
+              },
+              "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Http\\MindMuse.Http.csproj": {
+                "projectPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Http\\MindMuse.Http.csproj"
               }
             }
           }
@@ -170,7 +173,7 @@
             },
             "FluentValidation": {
               "target": "Package",
-              "version": "[11.9.0, )"
+              "version": "[11.9.1, )"
             },
             "Microsoft.AspNet.SignalR.Core": {
               "target": "Package",
@@ -630,6 +633,14 @@
             "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
               "version": "[8.0.1, )"
+            },
+            "Refit": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Refit.HttpClientFactory": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Twilio": {
               "target": "Package",
