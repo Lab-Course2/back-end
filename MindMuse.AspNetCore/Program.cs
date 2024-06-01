@@ -9,11 +9,12 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using MindMuse.Http;
+using MindMuse.Http.Contracts;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 builder.Configuration.AddJsonFile("appsettings.json");
-Http.AddHttpModule(builder.Services, builder.Configuration);
 
 builder.Services.AddControllers(options =>
 {
@@ -26,8 +27,13 @@ builder.Services.AddLogging(builder =>
     builder.AddConsole();
 });
 
-ApplicationInjection.AddApplicationServices(builder.Services, builder.Configuration);
+Http.AddHttpModule(builder.Services, builder.Configuration);
 DataInjectionServices.AddDataServices(builder.Services, builder.Configuration);
+ApplicationInjection.AddApplicationServices(builder.Services, builder.Configuration);
+
+
+builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
+
 
 builder.Services.AddCors(options =>
 {
@@ -54,29 +60,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-// Add ASP.NET Core Identity
-//builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-//    .AddEntityFrameworkStores<AppointEaseContext>()
-//    .AddDefaultTokenProviders();
-
 // Other service registrations (Application services, Data services, Swagger, etc.)
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API Name", Version = "v1" });
-
-
-    // Add customization for DateOnly serialization
-    c.MapType<DateOnly>(() => new OpenApiSchema
-    {
-        Type = "string",
-        Format = "date"
-    });
 });
 
-
 var app = builder.Build();
-
-
 
 if (app.Environment.IsDevelopment())
 {
@@ -87,6 +77,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors("CorsPolicy");
+
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 
 app.UseAuthentication();
 

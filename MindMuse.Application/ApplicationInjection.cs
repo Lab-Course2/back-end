@@ -20,6 +20,8 @@ using MindMuse.Application.Contracts.Models.EmailConfig;
 using MindMuse.Data.Contracts.Interfaces;
 using MindMuse.Data.Contracts.Models;
 using MindMuse.Data.Repositories;
+using MindMuse.Http.Contracts.Interfaces;
+using MindMuse.Http.Services;
 
 namespace MindMuse.Application
 {
@@ -42,6 +44,7 @@ namespace MindMuse.Application
             serviceDescriptors.AddSingleton<IConfiguration>(configuration);
             serviceDescriptors.AddScoped<IAdminService, AdminService>();
             serviceDescriptors.AddScoped<ISearchService, SearchService>();
+            serviceDescriptors.AddScoped<IStripeApi, StripeService>();
             serviceDescriptors.AddTransient<IValidator<AdminRequest>, CreateAdminValidator>();
             serviceDescriptors.AddTransient<IValidator<ClinicRequest>, UpdateClinicValidator>();
             serviceDescriptors.AddScoped<IAppointmentSlotService, AppointmentSlotService>();
