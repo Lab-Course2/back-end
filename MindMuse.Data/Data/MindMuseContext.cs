@@ -24,6 +24,10 @@ namespace MindMuse.Data.Data
         public DbSet<Doctor> Doctor { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<AppointmentSlot> AppointmentSlot { get; set; }
+        public DbSet<ChatMessages> Messages { get; set; }
+        public DbSet<ConnectionRequests> ConnectionRequests { get; set; }
+        public DbSet<Connections> Connections { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

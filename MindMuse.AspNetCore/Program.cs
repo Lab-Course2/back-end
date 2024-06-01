@@ -11,6 +11,7 @@ using System.Text;
 using MindMuse.Http;
 using MindMuse.Http.Contracts;
 using Stripe;
+using MindMuse.Application.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -39,8 +40,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", policy =>
     {
-        policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
-        policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3001");
+        policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000", "http://localhost:3001").AllowCredentials();
     });
 });
 
@@ -82,7 +82,14 @@ StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey"
 
 app.UseAuthentication();
 
+app.UseRouting();
+
 app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<ChatHub>("/chatHub");
+});
 
 app.MapControllers();
 
