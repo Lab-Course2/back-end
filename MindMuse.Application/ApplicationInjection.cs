@@ -33,11 +33,11 @@ namespace MindMuse.Application
         {
             serviceDescriptors.AddAutoMapper(typeof(MappingProfile));
             serviceDescriptors.AddTransient<IValidator<PatientRequest>, CreatePatientValidator>();
-            serviceDescriptors.AddScoped<IUserService, UserService>();
             serviceDescriptors.AddTransient<IValidator<DoctorRequest>, CreateDoctorValidator>();
             serviceDescriptors.AddScoped<IApplicationExtensions, ApplicationExtensions>();
             serviceDescriptors.AddScoped<IDoctorService, DoctorService>();
             serviceDescriptors.AddScoped<IPatientService, PatientService>();
+            serviceDescriptors.AddScoped<IUserService, UserService>();
             serviceDescriptors.AddScoped<IApplicationExtensions, ApplicationExtensions>();
             serviceDescriptors.AddSingleton<IOperationResult, OperationResult>();
             serviceDescriptors.AddScoped<IEmailServices, EmailService>();
