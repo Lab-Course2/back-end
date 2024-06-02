@@ -32,6 +32,7 @@ namespace MindMuse.AspNetCore.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
         [HttpPost]
         [Route("SendMessage")]
         public async Task<IActionResult> SendMessage([FromBody] MessageRequest messageRequest)
@@ -48,6 +49,4 @@ namespace MindMuse.AspNetCore.Controllers
             }
         }
     }
-
-
 }

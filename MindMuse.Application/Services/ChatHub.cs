@@ -5,11 +5,6 @@ using MindMuse.Application.Contracts.Interfaces;
 using MindMuse.Application.Contracts.Models.Hub;
 using MindMuse.Application.Contracts.Models.Requests;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MindMuse.Application.Services
 {
@@ -21,7 +16,7 @@ namespace MindMuse.Application.Services
         private readonly ChatBotService _chatBotService;
         private readonly INotificationService _notificationService;
 
-
+        private static HashSet<string> connectedUsers = new HashSet<string>();
 
 
         public ChatHub(IChatMessagesService chatMessagesService, IHubUserService hubServices, UserManager<ApplicationUser> userManager, ChatBotService chatBotService, INotificationService notificationService)
@@ -162,12 +157,17 @@ namespace MindMuse.Application.Services
             {
                 var connectionId = Context.ConnectionId;
                 var users = await _hubServices.GetAllUsers();
+
+                if (users == null)
+                    return;
+
                 var usersToRemove = users.Where(u => u.ConnectionId != null && u.ConnectionId.Contains(connectionId)).ToList();
                 foreach (var user in usersToRemove)
                 {
                     await _hubServices.RemoveUser(user.UserId);
                     Console.WriteLine(user.ConnectionId + " has been removed");
                 }
+                connectedUsers.Remove(Context.ConnectionId);
                 await base.OnDisconnectedAsync(exception);
             }
             catch
