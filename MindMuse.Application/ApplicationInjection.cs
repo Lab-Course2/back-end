@@ -33,11 +33,11 @@ namespace MindMuse.Application
         {
             serviceDescriptors.AddAutoMapper(typeof(MappingProfile));
             serviceDescriptors.AddTransient<IValidator<PatientRequest>, CreatePatientValidator>();
+            serviceDescriptors.AddScoped<IUserService, UserService>();
             serviceDescriptors.AddTransient<IValidator<DoctorRequest>, CreateDoctorValidator>();
             serviceDescriptors.AddScoped<IApplicationExtensions, ApplicationExtensions>();
             serviceDescriptors.AddScoped<IDoctorService, DoctorService>();
             serviceDescriptors.AddScoped<IPatientService, PatientService>();
-            serviceDescriptors.AddScoped<IUserService, UserService>();
             serviceDescriptors.AddScoped<IApplicationExtensions, ApplicationExtensions>();
             serviceDescriptors.AddSingleton<IOperationResult, OperationResult>();
             serviceDescriptors.AddScoped<IEmailServices, EmailService>();
@@ -61,6 +61,10 @@ namespace MindMuse.Application
             serviceDescriptors.AddScoped<IConnectionRequestService, ConnectionRequestService>();
             serviceDescriptors.AddScoped<IConnectionUserService, ConnectionUserService>();
             serviceDescriptors.AddScoped<IHubUserService, HubUserService>();
+            serviceDescriptors.AddScoped<IDashboardService, DashboardService>();
+
+            serviceDescriptors.AddScoped<INotificationService, NotificationService>();
+
 
             serviceDescriptors.AddScoped<ChatBotService>();
 
@@ -69,7 +73,9 @@ namespace MindMuse.Application
                 return new ChatHub(serviceDescriptors.BuildServiceProvider().GetService<IChatMessagesService>(),
                     serviceDescriptors.BuildServiceProvider().GetService<IHubUserService>(),
                     serviceDescriptors.BuildServiceProvider().GetService<UserManager<ApplicationUser>>(),
-                    serviceDescriptors.BuildServiceProvider().GetService<ChatBotService>());
+                    serviceDescriptors.BuildServiceProvider().GetService<ChatBotService>(),
+                    serviceDescriptors.BuildServiceProvider().GetService<INotificationService>());
+
             });
 
             serviceDescriptors.AddSignalR();

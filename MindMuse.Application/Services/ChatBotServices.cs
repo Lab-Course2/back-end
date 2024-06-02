@@ -89,7 +89,7 @@ namespace MindMuse.Application.Services
         {
             string question = chatbotRequest.FreeTextQuestion.ToLower();
 
-            if (IsGreeting(question))
+            if (IsGreeting(question) && question.Contains("help") == false)
             {
                 return new { message = GenerateGreetingResponse(chatbotRequest), date = DateTime.Now.ToShortDateString(), time = DateTime.Now.ToShortTimeString(), isFreeQuestion = true };
             }
@@ -161,7 +161,7 @@ namespace MindMuse.Application.Services
 
             foreach (string greeting in greetings)
             {
-                if (ComputeLevenshteinDistance(word, greeting) <= ComputeThreshold(greeting))
+                if (ComputeLevenshteinDistance(word, greeting) < ComputeThreshold(greeting))
                 {
                     return true;
                 }
