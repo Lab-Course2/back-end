@@ -29,11 +29,12 @@ namespace MindMuse.Application.Contracts.Validator
             RuleFor(x => x.Location).NotEmpty().WithMessage("Location is required.");
             // Added attribute for Address
             RuleFor(x => x.Address).NotEmpty().WithMessage("Address is required.");
-
             RuleFor(x => x.CreatedDate)
-            .NotEmpty().WithMessage("CreatedDate is required.")
-            .Must(date => !date.HasValue || date <= DateOnly.FromDateTime(DateTime.Today))
-            .WithMessage("CreatedDate cannot be in the future.");
+             .NotEmpty().WithMessage("CreatedDate is required.")
+             .Must(date => date <= DateTime.Today)
+             .WithMessage("CreatedDate cannot be in the future.");
+
+
 
             // Added attribute for OtherDetails
             RuleFor(x => x.OtherDetails).NotEmpty().WithMessage("OtherDetails is required.");

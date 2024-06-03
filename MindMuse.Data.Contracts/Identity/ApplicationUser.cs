@@ -15,5 +15,6 @@ namespace MindMuse.Application.Contracts.Identity
         public string Address { get; set; }
         public string? PhotoData { get; set; }
         public string? PhotoFormat { get; set; }
+        public DateTime DateOfBirth { get; set; }
     }
 }

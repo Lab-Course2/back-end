@@ -13,7 +13,7 @@ namespace MindMuse.Data.Contracts.Models
     {
         public int PersonalNumber { get; set; }
         public string? Specialisation { get; set; }
-        public DateOnly DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }
         public string? Description { get; set; }
         public string ClinicId { get; set; }
