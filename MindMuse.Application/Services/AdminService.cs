@@ -31,7 +31,6 @@ namespace MindMuse.Application.Services
         {
             try
             {
-
                 var adminExists = await CheckIfAdminExists(adminRequest.Email, adminRequest.PersonalNumber, null);
 
                 if (adminExists != null)
@@ -40,6 +39,7 @@ namespace MindMuse.Application.Services
                 }
 
                 var user = _mapper.Map<Admin>(adminRequest);
+                user.DateOfBirth = adminRequest.DateOfBirth; // Assign DateOfBirth from AdminRequest to Admin
 
                 var result = await _userManager.CreateAsync(user, adminRequest.Password);
 
@@ -64,6 +64,18 @@ namespace MindMuse.Application.Services
             {
                 _common.AddErrorMessage($"Error creating admin: {ex.Message}");
                 return _operationResult.ErrorResult($"Failed to create user:", new[] { ex.Message });
+            }
+        }
+
+
+        private void UpdateAdminProperties(ApplicationUser existingAdmin, AdminRequest adminRequest)
+        {
+            _mapper.Map(adminRequest, existingAdmin);
+            existingAdmin.DateOfBirth = adminRequest.DateOfBirth; // Add this line to set the DateOfBirth property
+
+            if (existingAdmin is Admin adminToUpdate)
+            {
+                _mapper.Map(adminRequest, adminToUpdate);
             }
         }
         private async Task<Admin> CheckIfAdminExists(string email, int personalNumber, string currentUserId)
@@ -173,17 +185,7 @@ namespace MindMuse.Application.Services
                 return _operationResult.ErrorResult($"Failed to update admin:", new[] { ex.Message });
             }
         }
-        private void UpdateAdminProperties(ApplicationUser existingAdmin, AdminRequest adminRequest)
-        {
-            // Use AutoMapper to map properties from PatientRequest to ApplicationUser
-            _mapper.Map(adminRequest, existingAdmin);
 
-            if (existingAdmin is Admin adminToUpdate)
-            {
-                // Additional mapping for properties specific to the Patient class
-                _mapper.Map(adminRequest, adminToUpdate);
-            }
-        }
         public async Task<OperationResult> ConfirmEmail(string token, string email)
         {
             var user = await _userManager.FindByEmailAsync(email);

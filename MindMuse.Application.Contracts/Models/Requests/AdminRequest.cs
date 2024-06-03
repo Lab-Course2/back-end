@@ -19,7 +19,7 @@ namespace MindMuse.Application.Contracts.Models.Request
         public string Password { get; set; }
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
-        public DateOnly DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public string? PhotoData { get; set; }
         public string? PhotoFormat { get; set; }
     }

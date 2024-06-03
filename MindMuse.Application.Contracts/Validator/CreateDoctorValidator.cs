@@ -30,9 +30,9 @@ namespace MindMuse.Application.Contracts.Validator
             RuleFor(x => x.Specialisation).NotEmpty().WithMessage("Specialisation is required.");
             RuleFor(x => x.Description).NotEmpty().WithMessage("Description is required.");
             RuleFor(x => x.DateOfBirth)
-              .NotEmpty().WithMessage("DateOfBirth is required.")
-              .Must(date => date != default(DateOnly)).WithMessage("Invalid DateOfBirth.")
-              .Must(dateOfBirth => IsAtLeast21YearsOld(dateOfBirth)).WithMessage("You must be at least 21 years old.");
+             .NotEmpty().WithMessage("DateOfBirth is required.")
+             .Must(date => date <= DateTime.Today)
+             .WithMessage("DateOfBirth cannot be in the future.");
 
         }
         private bool IsAtLeast21YearsOld(DateOnly dateOfBirth)

@@ -11,7 +11,12 @@ namespace MindMuse.Application.Mapper
     {
         public MappingProfile()
         {
-            CreateMap<Patient, PatientRequest>().ReverseMap().ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            CreateMap<Patient, PatientRequest>()
+                 .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.DateOfBirth.ToString("yyyy-MM-dd")))
+                 .ReverseMap()
+                 .ForMember(dest => dest.Id, opt => opt.Ignore())
+                 .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => DateOnly.Parse(src.DateOfBirth)));
             CreateMap<Admin, AdminRequest>().ReverseMap();
             CreateMap<Doctor, DoctorRequest>().ReverseMap().ForMember(dest => dest.Id, opt => opt.Ignore());
             CreateMap<ApplicationUser, PatientRequest>().ReverseMap();

@@ -37,7 +37,6 @@ namespace MindMuse.Application.Services
         {
             try
             {
-
                 var patientExists = await CheckIfPatientExists(patientRequest.UserName, patientRequest.Email, patientRequest.PersonalNumber, null);
 
                 if (patientExists != null)
@@ -72,7 +71,6 @@ namespace MindMuse.Application.Services
             }
         }
 
-
         private async Task<Patient> CheckIfPatientExists(string username, string email, int personalNumber, string currentUserId)
         {
             var patients = await GetAllPatients();
@@ -86,6 +84,7 @@ namespace MindMuse.Application.Services
 
             return null;
         }
+
 
         public async Task<OperationResult> DeletePatient(string patientId)
         {

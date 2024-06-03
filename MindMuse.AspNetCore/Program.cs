@@ -12,14 +12,36 @@ using MindMuse.Http;
 using MindMuse.Http.Contracts;
 using Stripe;
 using MindMuse.Application.Services;
+using MindMuse.Application.Contracts;
+using MongoDB.Driver;
+using MindMuse.AspNetCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 builder.Configuration.AddJsonFile("appsettings.json");
 
+builder.Services.Configure<MongoDbSettings>(configuration.GetSection("MongoDbSettings")); // Add this line
+
+builder.Services.AddSingleton<IMongoClient, MongoClient>(sp =>
+{
+    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
+    return new MongoClient(settings.ConnectionString);
+});
+
+builder.Services.AddScoped<IMongoDatabase>(sp =>
+{
+    var settings = sp.GetRequiredService<IOptions<MongoDbSettings>>().Value;
+    var client = sp.GetRequiredService<IMongoClient>();
+    return client.GetDatabase(settings.DatabaseName);
+});
+
 builder.Services.AddControllers(options =>
 {
     options.Filters.Add<GlobalExceptionFilter>();
+}).AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
 });
 
 builder.Services.AddLogging(builder =>

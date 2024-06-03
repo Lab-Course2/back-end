@@ -12,7 +12,7 @@ namespace MindMuse.Data.Contracts.Models
     public partial class Clinic : ApplicationUser
     {
         public string? Location { get; set; }
-        public DateOnly? CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
         public string? OtherDetails { get; set; }
         public virtual ICollection<Doctor> Doctors { get; set; } = new List<Doctor>();
     }

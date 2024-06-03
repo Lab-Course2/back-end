@@ -25,7 +25,7 @@ namespace MindMuse.Application.Contracts.Models.Requests
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string? Location { get; set; }
-        public DateOnly? CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
         public string? OtherDetails { get; set; }
         public string? PhotoData { get; set; }
         public string? PhotoFormat { get; set; }
