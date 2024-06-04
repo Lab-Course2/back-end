@@ -33,6 +33,8 @@ namespace MindMuse.Http.Services
                 PaymentMethodTypes = paymentIntentRequest.PaymentMethodTypes,
                 Customer = paymentIntentRequest.PatientId,
                 PaymentMethod = paymentIntentRequest.PaymentMethod,
+                CaptureMethod = "automatic",
+                Confirm = true
             };
 
             var paymentIntent = await _paymentIntentService.CreateAsync(options);
