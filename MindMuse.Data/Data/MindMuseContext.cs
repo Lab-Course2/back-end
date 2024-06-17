@@ -28,6 +28,8 @@ namespace MindMuse.Data.Data
         public DbSet<ConnectionRequests> ConnectionRequests { get; set; }
         public DbSet<Connections> Connections { get; set; }
         public DbSet<Notifications> Notifications { get; set; }
+        public DbSet<Contract> Contracts { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
