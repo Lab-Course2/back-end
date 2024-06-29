@@ -30,11 +30,14 @@ namespace MindMuse.Data.Data
         public DbSet<Notifications> Notifications { get; set; }
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Planet> Planets { get; set; }
+        public DbSet<Satellite> Satellites { get; set; }
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-EUO8BVU\\MSSQLSERVER01;Initial Catalog=MindMuse;Integrated Security=True; TrustServerCertificate=true;");
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=MindMuse;Integrated Security=True; TrustServerCertificate=true;");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -47,6 +50,7 @@ namespace MindMuse.Data.Data
             builder.Entity<Patient>().ToTable("Patient");
             builder.Entity<Appointment>().ToTable("Appointments");
             builder.Entity<AppointmentSlot>().ToTable("AppointmentSlot");
+           
 
             // Adjust cascade behaviors for other relationships
 
