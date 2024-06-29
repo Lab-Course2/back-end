@@ -8843,24 +8843,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Zamira\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Hp\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application\\MindMuse.Application.csproj",
+      "projectUniqueName": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Application\\MindMuse.Application.csproj",
       "projectName": "MindMuse.Application",
-      "projectPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application\\MindMuse.Application.csproj",
-      "packagesPath": "C:\\Users\\Zamira\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application\\obj\\",
+      "projectPath": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Application\\MindMuse.Application.csproj",
+      "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Hp\\Source\\Repos\\back-end\\MindMuse.Application\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Zamira\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8875,20 +8870,20 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {
-              "projectPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj"
+            "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj": {
+              "projectPath": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Application.Contracts\\MindMuse.Application.Contracts.csproj"
             },
-            "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj": {
-              "projectPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj"
+            "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj": {
+              "projectPath": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj"
             },
-            "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Data\\MindMuse.Data.csproj": {
-              "projectPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Data\\MindMuse.Data.csproj"
+            "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Data\\MindMuse.Data.csproj": {
+              "projectPath": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Data\\MindMuse.Data.csproj"
             },
-            "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Http.Contracts\\MindMuse.Http.Contracts.csproj": {
-              "projectPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Http.Contracts\\MindMuse.Http.Contracts.csproj"
+            "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Http.Contracts\\MindMuse.Http.Contracts.csproj": {
+              "projectPath": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Http.Contracts\\MindMuse.Http.Contracts.csproj"
             },
-            "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Http\\MindMuse.Http.csproj": {
-              "projectPath": "C:\\Users\\Zamira\\Desktop\\LabCourse2\\MindMuse.Http\\MindMuse.Http.csproj"
+            "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Http\\MindMuse.Http.csproj": {
+              "projectPath": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Http\\MindMuse.Http.csproj"
             }
           }
         }
@@ -8897,6 +8892,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -8948,7 +8948,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
