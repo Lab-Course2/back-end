@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using MindMuse.Data.Contracts.Models;
 using MindMuse.Data.Data;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MindMuse.AspNetCore.Controllers
 {
@@ -10,27 +13,25 @@ namespace MindMuse.AspNetCore.Controllers
     public class SatelliteController : ControllerBase
     {
         private readonly MindMuseContext _context;
+
         public SatelliteController(MindMuseContext context)
         {
             _context = context;
         }
 
-        
         [HttpGet]
-        public async Task<ActionResult<IEnumerable< Satellite>>> GetSatellite()
+        public async Task<ActionResult<IEnumerable<Satellite>>> GetSatellites()
         {
-            return await _context.Satellites.ToListAsync();
+            return await _context.Satellites.Where(s => !s.IsDeleted).ToListAsync();
         }
 
         [HttpGet("planet")]
-        public async Task<ActionResult<IEnumerable<Planet>>> GetPlanet()
+        public async Task<ActionResult<IEnumerable<Planet>>> GetPlanets()
         {
             var planets = await _context.Planets.ToListAsync();
             return planets;
         }
 
-
-       
         [HttpGet("{id}")]
         public async Task<ActionResult<Satellite>> GetSatellite(int id)
         {
@@ -44,7 +45,6 @@ namespace MindMuse.AspNetCore.Controllers
             return satellite;
         }
 
-
         [HttpPost("CreateSatellite")]
         public async Task<ActionResult<Satellite>> CreateSatellite(Satellite satellite)
         {
@@ -54,8 +54,6 @@ namespace MindMuse.AspNetCore.Controllers
             return CreatedAtAction(nameof(GetSatellite), new { id = satellite.Id }, satellite);
         }
 
-
-        
         [HttpDelete("DeleteSatellite/{id}")]
         public async Task<IActionResult> DeleteSatellite(int id)
         {
@@ -65,13 +63,12 @@ namespace MindMuse.AspNetCore.Controllers
                 return NotFound();
             }
 
-            _context.Satellites.Remove(satellite);
+            satellite.IsDeleted = true;
+            _context.Entry(satellite).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
-
-       
 
         [HttpPut("UpdateSatelliteById/{id}")]
         public async Task<IActionResult> UpdateSatelliteById(int id, [FromBody] Satellite satellite)
