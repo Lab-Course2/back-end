@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using MindMuse.Data.Contracts.Models;
 using MindMuse.Data.Data;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace MindMuse.AspNetCore.Controllers
 {
@@ -42,8 +45,7 @@ namespace MindMuse.AspNetCore.Controllers
             return CreatedAtRoute("GetPlanet", new { id = planet.Id }, planet);
         }
 
-        
-        [HttpDelete("DeletePlanet{id}")]
+        [HttpDelete("DeletePlanet/{id}")]
         public async Task<IActionResult> DeletePlanet(int id)
         {
             var planet = await _context.Planets.FindAsync(id);
@@ -52,12 +54,12 @@ namespace MindMuse.AspNetCore.Controllers
                 return NotFound();
             }
 
-            _context.Planets.Remove(planet);
+            planet.isDeleted = true;
+            _context.Entry(planet).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
-
 
         [HttpPut("UpdatePlanetById/{id}")]
         public async Task<IActionResult> UpdatePlanet(int id, Planet planet)
@@ -87,10 +89,10 @@ namespace MindMuse.AspNetCore.Controllers
 
             return NoContent();
         }
+
         private bool PlanetExist(int id)
         {
             return _context.Planets.Any(e => e.Id == id);
         }
     }
-
 }

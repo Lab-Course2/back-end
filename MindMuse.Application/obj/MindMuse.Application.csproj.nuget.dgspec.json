@@ -118,7 +118,7 @@
         "projectName": "MindMuse.Application",
         "projectPath": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Application\\MindMuse.Application.csproj",
         "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hp\\Source\\Repos\\back-end\\MindMuse.Application\\obj\\",
+        "outputPath": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -225,7 +225,7 @@
         "projectName": "MindMuse.Data.Contracts",
         "projectPath": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Data.Contracts\\MindMuse.Data.Contracts.csproj",
         "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hp\\Source\\Repos\\back-end\\MindMuse.Data.Contracts\\obj\\",
+        "outputPath": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Data.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -463,7 +463,7 @@
         "projectName": "MindMuse.Http",
         "projectPath": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Http\\MindMuse.Http.csproj",
         "packagesPath": "C:\\Users\\Hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hp\\Source\\Repos\\back-end\\MindMuse.Http\\obj\\",
+        "outputPath": "C:\\Users\\Hp\\source\\repos\\back-end\\MindMuse.Http\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
